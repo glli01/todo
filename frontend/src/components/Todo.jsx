@@ -1,8 +1,19 @@
 import React from "react";
-import tasks from "../tasks";
 import Task from "./Task";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Todo = () => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    getAllTasks();
+  }, []);
+
+  const getAllTasks = async () => {
+    const response = await axios.get("/api/tasks");
+    setTasks(response.data);
+  };
   return (
     <div className="List">
       <h1>MY TODOLIST</h1>
