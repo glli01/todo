@@ -14,6 +14,7 @@ const Todo = () => {
     const response = await axios.get("/api/tasks");
     setTasks(response.data);
   };
+
   return (
     <div className="List">
       <h1>MY TODOLIST</h1>
