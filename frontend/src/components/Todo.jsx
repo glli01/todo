@@ -3,9 +3,10 @@ import Task from "./Task";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Todo = () => {
+const Todo = ({ list }) => {
   const [tasks, setTasks] = useState([]);
-
+  // let tasks = [];
+  //useState("string")
   useEffect(() => {
     getAllTasks();
   }, []);
@@ -17,10 +18,12 @@ const Todo = () => {
 
   return (
     <div className="List">
-      <h1>MY TODOLIST</h1>
-      {tasks.map((task) => (
-        <Task item={task}></Task>
-      ))}
+      <h1>{list.title}</h1>
+      {tasks
+        .filter((task) => task.list === list._id)
+        .map((task) => (
+          <Task item={task}></Task>
+        ))}
     </div>
   );
 };
