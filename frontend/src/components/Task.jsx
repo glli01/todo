@@ -2,10 +2,9 @@ import React from "react";
 
 const Task = ({ item }) => {
   return (
-    <div className="task">
-      <h3>{item.title}</h3>
-      <div>{item.description}</div>
-      <div>{item.isCompleted ? "true" : "false"}</div>
+    <div className={item.isCompleted ? "task completed" : "task"}>
+      {item.isCompleted ? <span> </span> : <span> </span>} {item.title}
+      {/* {item.description} */}
     </div>
   );
 };

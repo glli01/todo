@@ -25,9 +25,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  width: 15vw;
-  padding-left: 5rem;
-  padding-right: 2rem;
+  width: 10vw;
+  padding: 0 4rem;
   height: 100vh;
   background-color: white;
 }
@@ -39,16 +38,20 @@ button:hover {
 }
 
 .sidebar__category-title {
+  color: rgb(100, 100, 100);
+  border-radius: 0.5rem;
   cursor: pointer;
+  width: 100%;
   font-size: 1.2rem;
   padding: 0.3rem;
-  color: rgb(20, 110, 195);
+  margin: 0.05rem;
   font-weight: 500;
 }
 .sidebar__category__item {
   border-radius: 0.5rem;
   padding: 0.3rem;
   margin: 0.1rem;
+  margin-left: 2rem;
 }
 .content {
   margin: 0 4rem;
@@ -135,6 +138,14 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.active > .sidebar__category-title {
+  background-color: rgb(245, 245, 245);
+  color: rgb(37, 150, 255);
+}
+
+.completed {
+  text-decoration: line-through;
+}
 @font-face {
   font-family: "Berkshire Swash";
   src: url("assets/fonts/BerkshireSwash-Regular.woff2") format("woff2"),
