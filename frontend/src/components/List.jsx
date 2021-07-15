@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const List = ({ list }) => {
   return (
     <div>
-      <div className="sidebar__title">
-        <Link to={`/lists/${list._id}`}>{list.title}</Link>
-      </div>
+      <Link to={`/lists/${list._id}`}>
+        <div className="sidebar__category__item">{list.title}</div>
+      </Link>
     </div>
   );
 };

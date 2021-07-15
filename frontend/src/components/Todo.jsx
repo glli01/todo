@@ -17,8 +17,9 @@ const Todo = ({ list }) => {
   };
 
   return (
-    <div className="List">
-      <h1>{list.title}</h1>
+    <div className="list">
+      <div className="list__title">{list.title}</div>
+      <div className="list__title-2">Tasks</div>
       {tasks
         .filter((task) => task.list === list._id)
         .map((task) => (
