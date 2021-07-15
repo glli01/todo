@@ -146,6 +146,10 @@ input[type="number"] {
 .completed {
   text-decoration: line-through;
 }
+
+.task {
+  display: flex;
+}
 @font-face {
   font-family: "Berkshire Swash";
   src: url("assets/fonts/BerkshireSwash-Regular.woff2") format("woff2"),
