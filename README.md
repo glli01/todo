@@ -1,5 +1,6 @@
 # **Todolist**  
 ## **By:** George Li (glli01)  
+## **Last Updated:** 7/15/2021
   
   
 ## **Project Description:**  
