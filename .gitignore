@@ -13,6 +13,7 @@ node_modules/
 /build
 
 # misc
+.env
 /.env
 .env/
 .DS_Store
