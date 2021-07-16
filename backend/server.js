@@ -1,8 +1,11 @@
 import express from "express"; //importing server dependency
 import tasks from "./data/tasks.js"; //importing data
 import lists from "./data/lists.js"; //import lists
+import connectDB from "./utils/db.js";
 import dotenv from "dotenv";
 dotenv.config();
+
+connectDB(); //connects to mongoDB
 
 const app = express(); //call method express and set to app;
 const PORT = 5000;
