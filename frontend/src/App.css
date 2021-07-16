@@ -65,7 +65,7 @@ button:hover {
 }
 
 .list__title {
-  color: rgb(126, 53, 194);
+  color: rgb(82, 149, 255);
   font-size: 1.5rem;
   margin: 2rem;
   margin-bottom: 3rem;
@@ -140,7 +140,7 @@ input[type="number"] {
 
 .active > .sidebar__category-title {
   background-color: rgb(245, 245, 245);
-  color: rgb(37, 150, 255);
+  color: rgb(0, 98, 255);
 }
 
 .completed {
@@ -149,6 +149,9 @@ input[type="number"] {
 
 .task {
   display: flex;
+}
+.task__title {
+  margin-left: 1rem;
 }
 @font-face {
   font-family: "Berkshire Swash";

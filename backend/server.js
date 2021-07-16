@@ -1,6 +1,8 @@
 import express from "express"; //importing server dependency
 import tasks from "./data/tasks.js"; //importing data
 import lists from "./data/lists.js"; //import lists
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express(); //call method express and set to app;
 const PORT = 5000;
