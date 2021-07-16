@@ -1,5 +1,5 @@
 import React from "react";
-import ListSidebar from "../components/ListSidebar";
+import ListSidebar from "../features/lists/components/ListSidebar";
 const HomeScreen = () => {
   return <div> </div>;
 };

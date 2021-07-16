@@ -5,7 +5,7 @@ const Hideable = ({ title = "title here", activeProp = false, children }) => {
   const [active, setActive] = useState(false);
   useEffect(() => {
     setActive(activeProp);
-  }, []);
+  }, [activeProp]);
   const toggleActive = () => {
     let newActive = !active;
     setActive(newActive);

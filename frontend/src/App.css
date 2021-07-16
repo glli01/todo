@@ -17,14 +17,14 @@ button:hover {
 .main {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   background-color: rgb(240, 240, 240);
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   width: 10vw;
   padding: 0 4rem;
   height: 100vh;
@@ -34,7 +34,7 @@ button:hover {
 .sidebar__category {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .sidebar__category-title {

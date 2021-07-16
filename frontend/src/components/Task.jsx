@@ -21,6 +21,7 @@ const Task = ({ item }) => {
           onMouseOver={(e) => (e.currentTarget.src = checkmarkUnfilled)}
           onMouseOut={(e) => (e.currentTarget.src = checkmarkFilled)}
           onClick={toggleComplete}
+          alt="filled checkmark"
         ></img>
       ) : (
         <img
@@ -28,6 +29,7 @@ const Task = ({ item }) => {
           onMouseOver={(e) => (e.currentTarget.src = checkmarkFilled)}
           onMouseOut={(e) => (e.currentTarget.src = checkmarkUnfilled)}
           onClick={toggleComplete}
+          alt="unfilled checkmark"
         ></img>
       )}{" "}
       <div className="task__title">{item.title}</div>
