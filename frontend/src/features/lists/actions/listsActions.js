@@ -14,6 +14,7 @@ export const getLists = () => async (dispatch) => {
       type: LIST_SUCCESS,
       payload: data,
     });
+    console.log("success");
   } catch (error) {
     dispatch({
       type: LIST_FAIL,

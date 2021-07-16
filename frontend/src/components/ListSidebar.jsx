@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import List from "./List";
 import { useEffect, useState } from "react";
-import Hideable from "../../../components/Hideable";
-import Timer from "../../../components/Timer";
+import Hideable from "./Hideable";
+import Timer from "./Timer";
 const ListSidebar = () => {
   const [lists, setLists] = useState([]);
 

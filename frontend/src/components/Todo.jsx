@@ -2,7 +2,7 @@ import React from "react";
 import Task from "./Task";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Hideable from "../../../components/Hideable";
+import Hideable from "./Hideable";
 
 const Todo = ({ list }) => {
   const [tasks, setTasks] = useState([]);
@@ -19,7 +19,7 @@ const Todo = ({ list }) => {
 
   return (
     <div className="list">
-      <div className="list__title">{list.title}</div>
+      <div className="list__title">{list ? list.title : ""}</div>
       <div className="list__title-2">Tasks</div>
       {tasks
         .filter((task) => task.list === list._id && task.isCompleted === false)

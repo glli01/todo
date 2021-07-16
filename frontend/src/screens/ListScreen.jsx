@@ -1,22 +1,33 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Todo from "../features/tasks/components/Todo";
+import Todo from "../components/Todo";
+import { useDispatch, useSelector } from "react-redux";
+import { getLists } from "../features/lists/actions/listsActions";
 
 const ListScreen = ({ match }) => {
-  // const [tasks, setTasks] = useState([]);
-  const [list, setList] = useState({});
+  const dispatch = useDispatch();
+  const lists = useSelector((state) => state.lists.lists);
+  console.log(lists);
+  console.log("updated");
+  const list = lists.find((list) => list._id === Number(match.params.id));
+  console.log(list);
+  // useEffect(() => {
+  //   dispatch(getLists());
+  // }, [dispatch]);
+  // const getList = () => {
+  //   const newList = lists.find((list) => list._id === match.params.id);
+  //   console.log(lists);
+  //   console.log(match.params.id);
+  //   console.log(newList);
+  //   setList(newList);
+  // };
 
-  const getList = async (id) => {
-    const { data } = await axios.get(`/api/lists/${id}`);
-    setList(data);
-  };
+  // useEffect(() => {
+  //   getList();
+  // }, [match]);
 
-  useEffect(() => {
-    getList(match.params.id);
-  }, [match]);
-
-  return <Todo list={list}></Todo>;
+  return <>{list ? <Todo list={list}></Todo> : ""}</>;
 };
 
 export default ListScreen;
