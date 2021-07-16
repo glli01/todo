@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Todo from "../components/Todo";
+import Todo from "../features/tasks/components/Todo";
 
 const ListScreen = ({ match }) => {
   // const [tasks, setTasks] = useState([]);

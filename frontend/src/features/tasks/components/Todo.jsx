@@ -2,7 +2,7 @@ import React from "react";
 import Task from "./Task";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Hideable from "./Hideable";
+import Hideable from "../../../components/Hideable";
 
 const Todo = ({ list }) => {
   const [tasks, setTasks] = useState([]);
