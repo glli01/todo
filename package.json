@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/glli01/todo-tutorial#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "concurrently": "^6.2.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
