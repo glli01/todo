@@ -2,6 +2,7 @@ import {
   TASK_REQUEST,
   TASK_SUCCESS,
   TASK_FAIL,
+  TASK_TOGGLE_COMPLETED,
 } from "../constants/tasksConstants";
 import axios from "axios";
 export const getAllTasks = () => async (dispatch) => {
@@ -18,4 +19,8 @@ export const getAllTasks = () => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const toggleCompleted = (id) => (dispatch) => {
+  dispatch({ type: TASK_TOGGLE_COMPLETED, id });
 };
