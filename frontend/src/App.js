@@ -1,11 +1,21 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Todo from "./components/Todo";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
+import ListScreen from "./screens/ListScreen";
+import ListSidebar from "./components/ListSidebar";
 function App() {
   return (
     <>
-      <Todo></Todo>
+      <Router>
+        <div className="main">
+          <ListSidebar></ListSidebar>
+
+          <div className="content">
+            <Route path="/" component={HomeScreen} exact />
+            <Route path="/lists/:id" component={ListScreen} />
+          </div>
+        </div>
+      </Router>
     </>
   );
 }

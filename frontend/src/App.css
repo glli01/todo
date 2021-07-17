@@ -1,38 +1,175 @@
-.App {
+* {
+  text-decoration: none;
+  color: black;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  outline: none;
+}
+button {
+  padding: 1rem;
+  cursor: pointer;
+}
+button:hover {
+  color: red;
+}
+/* Implementing theme from dribbble by mikSkuza (KosmoTime) */
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: rgb(240, 240, 240);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 10vw;
+  padding: 0 4rem;
+  height: 100vh;
+  background-color: white;
+}
+
+.sidebar__category {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sidebar__category-title {
+  color: rgb(100, 100, 100);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  margin: 0.05rem;
+  font-weight: 500;
+}
+.sidebar__category__item {
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin: 0.1rem;
+  margin-left: 2rem;
+}
+.content {
+  margin: 0 auto;
+  width: 50vw;
+}
+.sidebar__category__item:hover {
+  background-color: rgb(250, 250, 250);
+}
+.sidebar__category__item:focus {
+  background-color: rgb(240, 240, 240);
+}
+
+.list__title {
+  color: rgb(82, 149, 255);
+  font-size: 1.5rem;
+  margin: 2rem;
+  margin-bottom: 3rem;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+}
+.list__title-2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.task {
+  background-color: white;
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.logo {
+  padding: 0.3rem;
+  font-size: 2rem;
+  padding: 2rem 0.3rem;
+  margin-bottom: 5rem;
+  font-family: "Berkshire Swash";
+  font-size: 2rem;
+  color: hsla(226, 21%, 35%, 1);
+  cursor: pointer;
+}
+
+.timer {
+  font-size: 2rem;
+  width: 100%;
+}
+.timer__clock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: inherit;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.timer__clock__input {
+  width: 2rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hideable-content {
+  display: none;
+}
+.active {
+  display: block !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.sidebar__category-title:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.active > .sidebar__category-title {
+  background-color: rgb(250, 250, 250);
+  color: rgb(0, 153, 255);
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.task {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
-
-.App-link {
-  color: #61dafb;
+.task__title {
+  margin-left: 1rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tasks__completed-title {
+  color: rgb(150, 150, 150);
+}
+.tasks__completed-title:hover {
+  color: rgb(100, 100, 100);
+}
+@font-face {
+  font-family: "Berkshire Swash";
+  src: url("assets/fonts/BerkshireSwash-Regular.woff2") format("woff2"),
+    url("assets/fonts/BerkshireSwash-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

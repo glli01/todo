@@ -1,11 +1,18 @@
 import React from "react"; //In this file we're using ESmodule react.
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 import "./index.css";
 import App from "./App";
+import { getLists } from "./features/lists/actions/listsActions.js";
+
+store.dispatch(getLists()); //call get list from api
 
 ReactDOM.render(
   <React.StrictMode>
-    <App /> {/*returns html code and adds it at root*/}
+    <Provider store={store}>
+      <App /> {/*returns html code and adds it at root*/}
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
