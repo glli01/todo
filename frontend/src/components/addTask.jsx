@@ -8,6 +8,7 @@ const AddTask = () => {
     const trimmedText = taskText.trim();
     if (e.which === 13 && trimmedText) {
       console.log("got enter key");
+      setTaskText("");
     }
   };
   return (
