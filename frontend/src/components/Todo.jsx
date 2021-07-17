@@ -32,7 +32,10 @@ const Todo = ({ list }) => {
             )
             .map((task) => <Task item={task}></Task>)
         : ""}
-      <Hideable title={"Show completed Tasks"}>
+      <Hideable
+        title={"Show completed Tasks"}
+        desiredClass="tasks__completed-title"
+      >
         {tasks
           ? tasks
               .filter(

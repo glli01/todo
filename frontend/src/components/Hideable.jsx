@@ -11,10 +11,12 @@ const Hideable = ({
   useEffect(() => {
     setActive(activeProp);
   }, [activeProp]);
+
   const toggleActive = () => {
     let newActive = !active;
     setActive(newActive);
   };
+
   return (
     <>
       <div className={active ? "hideable active" : "hideable"}>

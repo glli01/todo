@@ -21,6 +21,6 @@ export const getAllTasks = () => async (dispatch) => {
   }
 };
 
-export const toggleCompleted = (id) => (dispatch) => {
-  dispatch({ type: TASK_TOGGLE_COMPLETED, id });
-};
+// export const toggleCompleted = (id) => (dispatch) => {
+//   dispatch({ type: TASK_TOGGLE_COMPLETED, id });
+// };
