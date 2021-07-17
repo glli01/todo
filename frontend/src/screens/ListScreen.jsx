@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Todo from "../components/Todo";
 import { useDispatch, useSelector } from "react-redux";
 import { getList } from "../features/lists/actions/listsActions";
+import AddTask from "../components/AddTask";
 
 const ListScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,12 @@ const ListScreen = ({ match }) => {
     dispatch(getList(match.params.id));
   }, [dispatch, match]);
 
-  return <>{list ? <Todo list={list}></Todo> : ""}</>;
+  return (
+    <>
+      {list ? <Todo list={list}></Todo> : ""}
+      <AddTask></AddTask>
+    </>
+  );
 };
 
 export default ListScreen;
