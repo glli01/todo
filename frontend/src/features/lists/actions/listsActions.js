@@ -35,7 +35,7 @@ export const getList = (id) => async (dispatch) => {
       type: LIST_DETAILS_REQUEST,
     });
     console.log("dispatched");
-    const { data } = await axios.get(`/api/list/${id}`);
+    const { data } = await axios.get(`/api/lists/${id}`);
     dispatch({
       type: LIST_DETAILS_SUCCESS,
       payload: data,

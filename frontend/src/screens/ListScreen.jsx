@@ -7,9 +7,9 @@ import { getLists, getList } from "../features/lists/actions/listsActions";
 
 const ListScreen = ({ match }) => {
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.list);
+  const list = useSelector((state) => state.list.list);
   useEffect(() => {
-    dispatch(getList());
+    dispatch(getList(match.params.id));
   }, [dispatch]);
 
   return <>{list ? <Todo list={list}></Todo> : ""}</>;

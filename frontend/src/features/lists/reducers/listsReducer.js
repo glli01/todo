@@ -29,7 +29,7 @@ export const listDetailsReducer = (
     case LIST_DETAILS_REQUEST:
       return { loading: true, list: {} };
     case LIST_DETAILS_SUCCESS:
-      return { loading: false, lists: action.payload };
+      return { loading: false, list: action.payload };
     case LIST_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
