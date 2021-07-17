@@ -15,8 +15,14 @@ const ListScreen = ({ match }) => {
 
   return (
     <>
-      {list ? <Todo list={list}></Todo> : ""}
-      <AddTask></AddTask>
+      {list ? (
+        <>
+          <Todo list={list}></Todo>
+          <AddTask list={list}></AddTask>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -3,6 +3,7 @@ import {
   TASK_SUCCESS,
   TASK_FAIL,
   TASK_TOGGLE_COMPLETED,
+  TASK_ADD,
 } from "../constants/tasksConstants";
 
 export const tasksReducer = (state = { tasks: [] }, action) => {
@@ -22,7 +23,8 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       };
       return { ...state, tasks: newTasks };
     }
-
+    case TASK_ADD:
+      return { ...state, tasks: [...state.tasks, action.payload] };
     default:
       return state;
   }
