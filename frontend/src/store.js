@@ -5,9 +5,11 @@ import {
   listDetailsReducer,
   listsReducer,
 } from "./features/lists/reducers/listsReducer.js";
+import { tasksReducer } from "./features/tasks/reducers/tasksReducer.js";
 const reducer = combineReducers({
   lists: listsReducer,
   list: listDetailsReducer,
+  tasks: tasksReducer,
 });
 
 const middleware = [thunk];

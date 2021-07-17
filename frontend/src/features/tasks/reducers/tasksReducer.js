@@ -3,7 +3,8 @@ import {
   TASK_SUCCESS,
   TASK_FAIL,
 } from "../constants/tasksConstants";
-export const taskReducer = (state = { tasks: [] }, action) => {
+
+export const tasksReducer = (state = { tasks: [] }, action) => {
   switch (action.type) {
     case TASK_REQUEST:
       return { loading: true, tasks: [] };
