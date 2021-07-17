@@ -6,7 +6,7 @@ const AddTask = () => {
   const [taskText, setTaskText] = useState("add a task here");
   const handleKeyDown = (e) => {
     const trimmedText = taskText.trim();
-    if (e.which == 13 && trimmedText) {
+    if (e.which === 13 && trimmedText) {
     }
   };
   return (

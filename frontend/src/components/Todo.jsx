@@ -29,7 +29,7 @@ const Todo = ({ list }) => {
             .filter(
               (task) => task.list === list._id && task.isCompleted === false
             )
-            .map((task) => <Task item={task}></Task>)
+            .map((task) => <Task key={task._id} item={task}></Task>)
         : ""}
       <Hideable
         title={"Show completed Tasks"}
@@ -40,7 +40,7 @@ const Todo = ({ list }) => {
               .filter(
                 (task) => task.list === list._id && task.isCompleted === true
               )
-              .map((task) => <Task item={task}></Task>)
+              .map((task) => <Task key={task._id} item={task}></Task>)
           : ""}
       </Hideable>
     </div>

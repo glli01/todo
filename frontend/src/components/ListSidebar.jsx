@@ -24,7 +24,9 @@ const ListSidebar = () => {
           {lists
             .filter((list) => list._id % 2 === 1)
             .map((list) => (
-              <List list={list}> </List>
+              <List key={list._id} list={list}>
+                {" "}
+              </List>
             ))}
         </div>
       </Hideable>
@@ -35,7 +37,9 @@ const ListSidebar = () => {
       <Hideable activeProp={true} title={"Lists"}>
         <div className="sidebar__category">
           {lists.map((list) => (
-            <List list={list}> </List>
+            <List key={list._id} list={list}>
+              {" "}
+            </List>
           ))}
         </div>
       </Hideable>

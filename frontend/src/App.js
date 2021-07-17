@@ -10,7 +10,7 @@ function App() {
         <div className="main">
           <ListSidebar></ListSidebar>
 
-          <div class="content">
+          <div className="content">
             <Route path="/" component={HomeScreen} exact />
             <Route path="/lists/:id" component={ListScreen} />
           </div>
