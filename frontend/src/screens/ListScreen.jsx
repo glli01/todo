@@ -12,20 +12,6 @@ const ListScreen = ({ match }) => {
   console.log("updated");
   const list = lists.find((list) => list._id === Number(match.params.id));
   console.log(list);
-  // useEffect(() => {
-  //   dispatch(getLists());
-  // }, [dispatch]);
-  // const getList = () => {
-  //   const newList = lists.find((list) => list._id === match.params.id);
-  //   console.log(lists);
-  //   console.log(match.params.id);
-  //   console.log(newList);
-  //   setList(newList);
-  // };
-
-  // useEffect(() => {
-  //   getList();
-  // }, [match]);
 
   return <>{list ? <Todo list={list}></Todo> : ""}</>;
 };
