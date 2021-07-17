@@ -1,7 +1,6 @@
 import React from "react";
 import Task from "./Task";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Hideable from "./Hideable";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTasks } from "../features/tasks/actions/tasksActions.js";

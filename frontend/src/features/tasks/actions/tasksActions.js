@@ -2,7 +2,7 @@ import {
   TASK_REQUEST,
   TASK_SUCCESS,
   TASK_FAIL,
-  TASK_TOGGLE_COMPLETED,
+  // TASK_TOGGLE_COMPLETED,
 } from "../constants/tasksConstants";
 import axios from "axios";
 export const getAllTasks = () => async (dispatch) => {

@@ -42,7 +42,7 @@ export const getList = (id) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: LIST_FAIL,
+      type: LIST_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

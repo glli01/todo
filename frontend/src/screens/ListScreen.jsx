@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import Todo from "../components/Todo";
 import { useDispatch, useSelector } from "react-redux";
-import { getLists, getList } from "../features/lists/actions/listsActions";
+import { getList } from "../features/lists/actions/listsActions";
 
 const ListScreen = ({ match }) => {
   const dispatch = useDispatch();

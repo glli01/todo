@@ -1,4 +1,3 @@
-import Task from "../../../components/Task";
 import {
   TASK_REQUEST,
   TASK_SUCCESS,

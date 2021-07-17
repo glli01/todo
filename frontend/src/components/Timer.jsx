@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const Timer = () => {
   const [minutes, setMinutes] = useState("25");
   const [seconds, setSeconds] = useState("00");
