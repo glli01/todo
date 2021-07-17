@@ -153,9 +153,16 @@ input[type="number"] {
 
 .task {
   display: flex;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 .task__title {
   margin-left: 1rem;
+}
+.tasks__completed-title {
+  color: rgb(150, 150, 150);
+}
+.tasks__completed-title:hover {
+  color: rgb(100, 100, 100);
 }
 @font-face {
   font-family: "Berkshire Swash";

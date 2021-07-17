@@ -16,6 +16,15 @@ const Task = ({ item }) => {
   // const markAsIncomplete = () => {
 
   // };
+  const fillMark = (e) => {
+    e.currentTarget.parentElement.className = "task completed";
+    e.currentTarget.src = checkmarkFilled;
+  };
+
+  const unfillMark = (e) => {
+    e.currentTarget.parentElement.className = "task";
+    e.currentTarget.src = checkmarkUnfilled;
+  };
   const clickToggle = () => {
     dispatch({ type: TASK_TOGGLE_COMPLETED, id: item._id });
   };
@@ -24,16 +33,16 @@ const Task = ({ item }) => {
       {isCompleted ? (
         <img
           src={checkmarkFilled}
-          onMouseOver={(e) => (e.currentTarget.src = checkmarkUnfilled)}
-          onMouseOut={(e) => (e.currentTarget.src = checkmarkFilled)}
+          onMouseOver={unfillMark}
+          onMouseOut={fillMark}
           onClick={clickToggle}
           alt="filled checkmark"
         ></img>
       ) : (
         <img
           src={checkmarkUnfilled}
-          onMouseOver={(e) => (e.currentTarget.src = checkmarkFilled)}
-          onMouseOut={(e) => (e.currentTarget.src = checkmarkUnfilled)}
+          onMouseOver={fillMark}
+          onMouseOut={unfillMark}
           onClick={clickToggle}
           alt="unfilled checkmark"
         ></img>
