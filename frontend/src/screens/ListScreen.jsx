@@ -9,8 +9,9 @@ const ListScreen = ({ match }) => {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.list.list);
   useEffect(() => {
+    console.log("dispatched in listScreen");
     dispatch(getList(match.params.id));
-  }, [dispatch]);
+  }, [dispatch, match]);
 
   return <>{list ? <Todo list={list}></Todo> : ""}</>;
 };
