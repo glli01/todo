@@ -23,8 +23,14 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       };
       return { ...state, tasks: newTasks };
     }
-    case TASK_ADD:
-      return { ...state, tasks: [...state.tasks, action.payload] };
+    case TASK_ADD: {
+      const max = Math.max(...state.tasks.map((task) => task._id));
+      const id = max + 1;
+      return {
+        ...state,
+        tasks: [...state.tasks, { ...action.payload, _id: id }],
+      };
+    }
     default:
       return state;
   }
