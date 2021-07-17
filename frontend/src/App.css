@@ -165,6 +165,10 @@ input[type="number"] {
 .tasks__completed-title:hover {
   color: rgb(100, 100, 100);
 }
+.tasks {
+  overflow-y: auto;
+  max-height: 60vh;
+}
 @font-face {
   font-family: "Berkshire Swash";
   src: url("assets/fonts/BerkshireSwash-Regular.woff2") format("woff2"),
