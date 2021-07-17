@@ -1,7 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Hideable = ({ title = "title here", activeProp = false, children }) => {
+const Hideable = ({
+  title = "title here",
+  activeProp = false,
+  children,
+  desiredClass = "sidebar__category-title",
+}) => {
   const [active, setActive] = useState(false);
   useEffect(() => {
     setActive(activeProp);
@@ -13,7 +18,7 @@ const Hideable = ({ title = "title here", activeProp = false, children }) => {
   return (
     <>
       <div className={active ? "hideable active" : "hideable"}>
-        <div className="sidebar__category-title" onClick={toggleActive}>
+        <div className={desiredClass} onClick={toggleActive}>
           {" "}
           {title}
         </div>
