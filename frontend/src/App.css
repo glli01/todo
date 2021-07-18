@@ -34,6 +34,7 @@ button:hover {
   padding: 0 4rem;
   height: 100vh;
   background-color: white;
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.02);
 }
 
 .sidebar__category {
@@ -58,6 +59,7 @@ button:hover {
   padding: 0.3rem;
   margin: 0.1rem;
   margin-left: 2rem;
+  display: flex;
 }
 .content {
   margin: 0 auto;
@@ -71,7 +73,7 @@ button:hover {
 }
 
 .list__title {
-  color: rgb(82, 149, 255);
+  color: hsla(254, 68%, 55%, 1);
   font-size: 1.5rem;
   margin: 2rem;
   margin-bottom: 3rem;
@@ -87,6 +89,8 @@ button:hover {
 }
 
 .task {
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   margin: 0.5rem 0;
   border-radius: 1rem;
@@ -150,7 +154,8 @@ input[type="number"] {
 
 .active > .sidebar__category-title {
   background-color: rgb(250, 250, 250);
-  color: rgb(0, 153, 255);
+  font-weight: 600;
+  color: hsla(254, 68%, 55%, 1);
 }
 
 .completed {
@@ -172,7 +177,47 @@ input[type="number"] {
 }
 .tasks {
   overflow-y: auto;
-  max-height: 60vh;
+  max-height: 75vh;
+}
+.sidebar__category__item-label {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100rem;
+  margin-right: 0.8rem;
+  background-color: blueviolet;
+  display: inline-block;
+}
+.task__wrapper {
+  display: flex;
+}
+.hoverable-content {
+  display: none;
+}
+.completed .delete {
+  text-decoration: none !important;
+}
+.blue {
+  background-color: #33b6ff;
+}
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: #f4c625;
+}
+.purple {
+  background-color: hsla(254, 68%, 55%, 1);
+}
+.green {
+  background-color: #8cf425;
+}
+.orange {
+  background-color: #ffad33;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @font-face {
   font-family: "Berkshire Swash";

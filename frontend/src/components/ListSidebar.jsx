@@ -18,7 +18,7 @@ const ListSidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="logo">Todolist</div>
+      <div className="logo">7/17/21</div>
       <Hideable activeProp={false} title={"Today"}>
         <div className="sidebar__category">
           {lists

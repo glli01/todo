@@ -4,6 +4,7 @@ import {
   TASK_FAIL,
   TASK_TOGGLE_COMPLETED,
   TASK_ADD,
+  TASK_DELETE,
 } from "../constants/tasksConstants";
 
 export const tasksReducer = (state = { tasks: [] }, action) => {
@@ -21,6 +22,10 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
         ...newTasks[index],
         isCompleted: !newTasks[index].isCompleted,
       };
+      return { ...state, tasks: newTasks };
+    }
+    case TASK_DELETE: {
+      const newTasks = state.tasks.filter((task) => task._id !== action.id);
       return { ...state, tasks: newTasks };
     }
     case TASK_ADD: {
