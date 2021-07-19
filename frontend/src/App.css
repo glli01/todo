@@ -44,6 +44,8 @@ button:hover {
 }
 
 .sidebar__category-title {
+  display: flex;
+  justify-content: space-between;
   color: rgb(100, 100, 100);
   border-radius: 0.5rem;
   cursor: pointer;
@@ -106,6 +108,14 @@ button:hover {
   font-size: 2rem;
   color: hsla(226, 21%, 35%, 1);
   cursor: pointer;
+}
+
+.icon {
+  margin: auto 0;
+}
+
+.icon > .wrapper > img {
+  object-fit: cover;
 }
 
 .timer {
@@ -218,6 +228,7 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
 }
 @font-face {
   font-family: "Berkshire Swash";

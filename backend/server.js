@@ -3,6 +3,10 @@ import tasks from "./data/tasks.js"; //importing data
 import lists from "./data/lists.js"; //import lists
 import connectDB from "./utils/db.js";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
+import List from "./models/listModel.js";
+import Task from "./models/taskModel.js";
+import User from "./models/userModel.js";
 dotenv.config();
 
 connectDB(); //connects to mongoDB
@@ -16,22 +20,46 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 }); //= get request at localhost:3000/
 
-app.get("/api/tasks", (req, res) => {
-  console.log("all tasks displayed");
-  res.json(tasks);
+app.get("/api/tasks", async (req, res) => {
+  try {
+    console.log("all tasks displayed");
+    const query = await Task.find({});
+    res.json(query);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.send(`Error: ${error.message}`);
+  }
 });
 
-app.get("/api/lists", (req, res) => {
-  console.log("GET request to /api/lists");
-  res.json(lists);
+app.get("/api/lists", async (req, res) => {
+  try {
+    console.log("GET request to /api/lists");
+    const response = await List.find({});
+    res.json(response);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.send(`Error: ${error.message}`);
+  }
 });
 
-app.get("/api/lists/:id", (req, res) => {
-  console.log(`GET request to /api/lists/${req.params.id}`);
-  res.json(lists.find((list) => list._id === Number(req.params.id)));
+app.get("/api/lists/:id", async (req, res) => {
+  try {
+    console.log(`GET request to /api/lists/${req.params.id}`);
+    const response = await List.findOne({ _id: req.params.id });
+    res.json(response);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.send(`Error: ${error.message}`);
+  }
 });
 
-app.get("/api/tasks/:id", (req, res) => {
-  console.log(`GET request to /api/tasks/${req.params.id}`);
-  res.json(tasks.find((task) => task._id === Number(req.params.id)));
+app.get("/api/tasks/:id", async (req, res) => {
+  try {
+    console.log(`GET request to /api/tasks/${req.params.id}`);
+    const response = await Task.findOne({ _id: req.params.id });
+    res.json(response);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.send(`Error: ${error.message}`);
+  }
 });

@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 const taskSchema = mongoose.Schema(
   {
     user: {
-      type: mongoose.Schema.Types.objectID,
+      type: mongoose.Schema.Types.ObjectID,
       required: true,
       ref: "User",
     },
     list: {
-      type: mongoose.Schema.Types.objectID,
+      type: mongoose.Schema.Types.ObjectID,
       required: true,
       ref: "List",
     },
