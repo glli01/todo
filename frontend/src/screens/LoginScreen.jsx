@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/user/actions/userActions";
+import { Link } from "react-router-dom";
 const LoginScreen = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -30,13 +31,15 @@ const LoginScreen = () => {
           }}
         />
       </div>
-      <button
-        onClick={() => {
-          dispatch(getUser(email, password));
-        }}
-      >
-        login
-      </button>
+      <Link to={`/login/?email=${email}`}>
+        <button
+          onClick={() => {
+            dispatch(getUser(email, password));
+          }}
+        >
+          login
+        </button>
+      </Link>
     </div>
   );
 };
