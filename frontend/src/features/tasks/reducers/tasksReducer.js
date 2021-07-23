@@ -3,7 +3,10 @@ import {
   TASK_SUCCESS,
   TASK_FAIL,
   TASK_TOGGLE_COMPLETED,
-  TASK_ADD,
+  TASK_ADD_SUCCESS,
+  TASK_ADD_FAIL,
+  TASK_ADD_REQUEST,
+  TASK_DELETE,
 } from "../constants/tasksConstants";
 
 export const tasksReducer = (state = { tasks: [] }, action) => {
@@ -23,8 +26,23 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       };
       return { ...state, tasks: newTasks };
     }
-    case TASK_ADD:
-      return { ...state, tasks: [...state.tasks, action.payload] };
+    case TASK_DELETE: {
+      const newTasks = state.tasks.filter((task) => task._id !== action.id);
+      return { ...state, tasks: newTasks };
+    }
+    case TASK_ADD_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        tasks: [...state.tasks, { ...action.payload }],
+      };
+    }
+    case TASK_ADD_REQUEST: {
+      return { ...state, loading: true };
+    }
+    case TASK_ADD_FAIL: {
+      return { ...state, loading: false, error: action.payload };
+    }
     default:
       return state;
   }

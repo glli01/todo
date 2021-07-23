@@ -63,7 +63,7 @@ const Timer = () => {
   return (
     <div className="timer">
       <div className="timer__clock">
-        <div className="wrapper">
+        <div className="wrapper--none">
           <input
             className="timer__clock__input"
             type="number"

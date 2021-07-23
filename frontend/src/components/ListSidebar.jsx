@@ -4,6 +4,8 @@ import List from "./List";
 import { useEffect, useState } from "react";
 import Hideable from "./Hideable";
 import Timer from "./Timer";
+import arrowDown from "../assets/img/arrow-down.svg";
+import arrowLeft from "../assets/img/arrow-left.svg";
 const ListSidebar = () => {
   const [lists, setLists] = useState([]);
 
@@ -18,7 +20,7 @@ const ListSidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="logo">Todolist</div>
+      <div className="logo">TodoList</div>
       <Hideable activeProp={false} title={"Today"}>
         <div className="sidebar__category">
           {lists
@@ -31,10 +33,20 @@ const ListSidebar = () => {
         </div>
       </Hideable>
       <Hideable activeProp={false} title={"Tomorrow"}></Hideable>
-      <Hideable activeProp={false} title={"Timer"}>
+      <Hideable
+        activeProp={false}
+        title={"Timer"}
+        assetShow={arrowDown}
+        assetNoShow={arrowLeft}
+      >
         <Timer></Timer>
       </Hideable>
-      <Hideable activeProp={true} title={"Lists"}>
+      <Hideable
+        activeProp={true}
+        title={"Lists"}
+        assetShow={arrowDown}
+        assetNoShow={arrowLeft}
+      >
         <div className="sidebar__category">
           {lists.map((list) => (
             <List key={list._id} list={list}>
