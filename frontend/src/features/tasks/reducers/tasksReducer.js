@@ -29,7 +29,11 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       return { ...state, tasks: newTasks };
     }
     case TASK_ADD: {
-      const max = Math.max(...state.tasks.map((task) => task._id));
+      const max = Math.max(
+        ...state.tasks.map((task) =>
+          typeof task._id === "number" ? task._id : 0
+        )
+      );
       const id = max + 1;
       return {
         ...state,
