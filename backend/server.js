@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import List from "./models/listModel.js";
 import Task from "./models/taskModel.js";
 import User from "./models/userModel.js";
+import bodyParser from "body-parser";
 dotenv.config();
 
 connectDB(); //connects to mongoDB
@@ -14,7 +15,8 @@ connectDB(); //connects to mongoDB
 const app = express(); //call method express and set to app;
 const PORT = 5000;
 
-app.listen(PORT, console.log(`Server is running on port ${PORT}`)); //listening to requests on port 5000.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("API is running...");
@@ -63,3 +65,18 @@ app.get("/api/tasks/:id", async (req, res) => {
     res.send(`Error: ${error.message}`);
   }
 });
+
+app.post("/api/tasks", async (req, res) => {
+  try {
+    console.log(`POST request to /api/tasks`);
+    // console.log(req.body);
+    const response = await Task.create(req.body);
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.send(`Error: ${error.message}`);
+  }
+});
+
+app.listen(PORT, console.log(`Server is running on port ${PORT}`)); //listening to requests on port 5000.
