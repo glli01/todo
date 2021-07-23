@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { TASK_ADD } from "../features/tasks/constants/tasksConstants";
+import { createNewTask } from "../features/tasks/actions/tasksActions.js";
 const AddTask = ({ list }) => {
   const dispatch = useDispatch();
   const [taskText, setTaskText] = useState("");
@@ -9,15 +10,14 @@ const AddTask = ({ list }) => {
     const trimmedText = taskText.trim();
     if (e.which === 13 && trimmedText) {
       console.log("got enter key");
-      dispatch({
-        type: TASK_ADD,
-        payload: {
+      dispatch(
+        createNewTask({
           title: trimmedText,
-          description: "",
-          isCompleted: false,
+          description: "no description",
           list: list._id,
-        },
-      });
+          user: "60f5f4497dd7b2277481702e",
+        })
+      );
       setTaskText("");
     }
   };

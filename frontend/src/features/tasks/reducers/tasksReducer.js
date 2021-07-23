@@ -31,17 +31,17 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       return { ...state, tasks: newTasks };
     }
     case TASK_ADD_SUCCESS: {
-      // const max = Math.max(
-      //   ...state.tasks.map((task) =>
-      //     typeof task._id === "number" ? task._id : 0
-      //   )
-      // );
-      // const id = max + 1;
       return {
         ...state,
         loading: false,
         tasks: [...state.tasks, { ...action.payload }],
       };
+    }
+    case TASK_ADD_REQUEST: {
+      return { ...state, loading: true };
+    }
+    case TASK_ADD_FAIL: {
+      return { ...state, loading: false, error: action.payload };
     }
     default:
       return state;

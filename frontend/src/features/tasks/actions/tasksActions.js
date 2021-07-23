@@ -10,7 +10,7 @@ import {
 } from "../constants/tasksConstants";
 import axios from "axios";
 
-export const getAllTasks = () => async (dispatch) => {
+export const getAllTasks = (task) => async (dispatch) => {
   try {
     dispatch({ type: TASK_REQUEST });
     const { data } = await axios.get("/api/tasks");
