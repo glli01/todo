@@ -6,10 +6,12 @@ import {
   listsReducer,
 } from "./features/lists/reducers/listsReducer.js";
 import { tasksReducer } from "./features/tasks/reducers/tasksReducer.js";
+import { userReducer } from "./features/user/reducers/userReducers.js";
 const reducer = combineReducers({
   lists: listsReducer,
   list: listDetailsReducer,
   tasks: tasksReducer,
+  user: userReducer,
 });
 
 const middleware = [thunk];
