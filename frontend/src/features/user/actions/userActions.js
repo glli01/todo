@@ -4,7 +4,7 @@ import {
   USER_LOGIN_SUCCESS,
 } from "../constants/userConstants";
 import axios from "axios";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 export const getUser = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
@@ -12,8 +12,13 @@ export const getUser = (email, password) => async (dispatch) => {
     const { data } = await axios.post(`/login/`, body);
     console.log(password);
     console.log(data.password);
-    if (data === "OK") {
-      dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+    if (data && data._id) {
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: data,
+        message: "Success",
+        success: true,
+      });
     } else {
       throw new Error("Incorrect password or email address.");
     }
@@ -24,6 +29,8 @@ export const getUser = (email, password) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
+      message: "Login Failed",
+      success: false,
     });
   }
 };

@@ -2,11 +2,11 @@ import {
   TASK_REQUEST,
   TASK_SUCCESS,
   TASK_FAIL,
-  TASK_TOGGLE_COMPLETED,
+  // TASK_TOGGLE_COMPLETED,
   TASK_ADD_SUCCESS,
   TASK_ADD_FAIL,
   TASK_ADD_REQUEST,
-  TASK_DELETE,
+  // TASK_DELETE,
 } from "../constants/tasksConstants";
 import axios from "axios";
 

@@ -224,12 +224,62 @@ input[type="number"] {
 .orange {
   background-color: #ffad33;
 }
+.spinner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.spinner > img {
+  height: 5%;
+  width: 5%;
+  margin: auto;
+  animation: spin infinite 2s linear;
+}
+.login__wrapper {
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.login__form__input {
+  border: 1px solid black;
+  border-radius: 5px;
+  max-width: 80%;
+  margin: auto;
+}
+.login__form__input > input {
+  width: 100%;
+}
+.login__form {
+  width: 15%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.login__button--submit {
+  width: 100%;
+}
+.login__message {
+  width: 100%;
+  text-align: center;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
 }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @font-face {
   font-family: "Berkshire Swash";
   src: url("assets/fonts/BerkshireSwash-Regular.woff2") format("woff2"),
