@@ -5,6 +5,7 @@ import connectDB from "./utils/db.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import List from "./models/listModel.js";
+import Password from "./models/passwordModel.js";
 import Task from "./models/taskModel.js";
 import User from "./models/userModel.js";
 import bodyParser from "body-parser";
@@ -86,11 +87,13 @@ app.get("/login/", async (req, res) => {
 app.post("/login/", async (req, res) => {
   try {
     console.log(`POST request to /login/`);
-    const response = await User.findOne({ email: req.body.email });
-    if (response) {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      console.log("User found with email, getting password hash");
+      const response = await Password.findOne({ user: user._id });
       const auth = bcrypt.compareSync(req.body.password, response.password);
       if (auth) {
-        res.send("OK");
+        res.send(user);
       } else {
         throw new Error("Incorrect Email and password combination");
       }
