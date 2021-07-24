@@ -14,7 +14,7 @@ const ListScreen = ({ match }) => {
     console.log("dispatched in listScreen");
     setList(lists.find((list) => list._id === match.params.id));
     // dispatch(getList(match.params.id));
-  }, [dispatch, match]);
+  }, [dispatch, match, lists]);
 
   return (
     <>
