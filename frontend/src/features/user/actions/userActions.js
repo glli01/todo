@@ -8,11 +8,11 @@ import bcrypt from "bcryptjs";
 export const getUser = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
-    const { data } = await axios.get(`/login/?email=${email}`);
+    const body = { email, password };
+    const { data } = await axios.post(`/login/`, body);
     console.log(password);
     console.log(data.password);
-    console.log(bcrypt.compareSync(password, data.password));
-    if (bcrypt.compareSync(password, data.password)) {
+    if (data === "OK") {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     } else {
       throw new Error("Incorrect password or email address.");

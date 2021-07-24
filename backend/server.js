@@ -90,9 +90,9 @@ app.post("/login/", async (req, res) => {
     if (response) {
       const auth = bcrypt.compareSync(req.body.password, response.password);
       if (auth) {
-        res.send("verified");
+        res.send("OK");
       } else {
-        res.send("Incorrect Email and password combination");
+        throw new Error("Incorrect Email and password combination");
       }
     } else {
       throw new Error("Account not found");
