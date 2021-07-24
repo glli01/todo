@@ -4,10 +4,11 @@ import Todo from "../components/Todo";
 import { useDispatch, useSelector } from "react-redux";
 import { getList } from "../features/lists/actions/listsActions";
 import AddTask from "../components/AddTask";
+import Spinner from "../components/Spinner";
 
 const ListScreen = ({ match }) => {
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.list.list);
+  const { loading, list } = useSelector((state) => state.list);
   useEffect(() => {
     console.log("dispatched in listScreen");
     dispatch(getList(match.params.id));
@@ -17,8 +18,14 @@ const ListScreen = ({ match }) => {
     <>
       {list ? (
         <>
-          <Todo list={list}></Todo>
-          <AddTask list={list}></AddTask>
+          {loading ? (
+            <Spinner></Spinner>
+          ) : (
+            <>
+              <Todo list={list}></Todo>
+              <AddTask list={list}></AddTask>
+            </>
+          )}
         </>
       ) : (
         ""

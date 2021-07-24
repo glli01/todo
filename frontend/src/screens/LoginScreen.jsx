@@ -15,6 +15,12 @@ const LoginScreen = () => {
   const { loading, message, success, error, user } = useSelector(
     (state) => state.user
   );
+  const handleKeyDown = (e) => {
+    if (e.which === 13) {
+      console.log("got enter key");
+      dispatch(getUser(email, password));
+    }
+  };
   useEffect(() => {
     if (success) {
       history.push("/");
@@ -37,6 +43,7 @@ const LoginScreen = () => {
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
               <div className="login__form__input">
@@ -47,6 +54,7 @@ const LoginScreen = () => {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
