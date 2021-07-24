@@ -4,14 +4,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ListScreen from "./screens/ListScreen";
 import ListSidebar from "./components/ListSidebar";
 import LoginScreen from "./screens/LoginScreen";
-import { getAllTasks } from "./features/tasks/actions/tasksActions";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllTasks());
-  }, []);
   return (
     <>
       <Router>

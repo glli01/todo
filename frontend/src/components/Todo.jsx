@@ -2,10 +2,10 @@ import React from "react";
 import Task from "./Task";
 import { useEffect } from "react";
 import Hideable from "./Hideable";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getAllTasks } from "../features/tasks/actions/tasksActions.js";
 
-const Todo = ({ list }) => {
+const Todo = React.memo(({ list }) => {
   // const dispatch = useDispatch();
   // const [tasks, setTasks] = useState([]);
   // let tasks = [];
@@ -47,6 +47,6 @@ const Todo = ({ list }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Todo;

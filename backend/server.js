@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/tasks", async (req, res) => {
   try {
-    console.log("all tasks displayed");
+    console.log("GET request to /api/tasks");
     const query = await Task.find({});
     res.json(query);
   } catch (error) {
