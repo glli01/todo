@@ -8,6 +8,7 @@ import List from "./models/listModel.js";
 import Task from "./models/taskModel.js";
 import User from "./models/userModel.js";
 import bodyParser from "body-parser";
+import bcrypt from "bcryptjs";
 dotenv.config();
 
 connectDB(); //connects to mongoDB
@@ -79,6 +80,26 @@ app.get("/login/", async (req, res) => {
     }
   } else {
     console.error("Please enter your email.");
+  }
+});
+
+app.post("/login/", async (req, res) => {
+  try {
+    console.log(`POST request to /login/`);
+    const response = await User.findOne({ email: req.body.email });
+    if (response) {
+      const auth = bcrypt.compareSync(req.body.password, response.password);
+      if (auth) {
+        res.send("verified");
+      } else {
+        res.send("Incorrect Email and password combination");
+      }
+    } else {
+      throw new Error("Account not found");
+    }
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.send(`Error: ${error.message}`);
   }
 });
 
