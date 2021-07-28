@@ -6,6 +6,7 @@ import {
   LIST_DETAILS_FAIL,
   LIST_DETAILS_REQUEST,
   LIST_DETAILS_SUCCESS,
+  LIST_LOGOUT,
 } from "../constants/listsConstants";
 
 export const listsReducer = (state = { lists: [] }, action) => {
@@ -16,6 +17,8 @@ export const listsReducer = (state = { lists: [] }, action) => {
       return { loading: false, lists: action.payload };
     case LIST_FAIL:
       return { loading: false, error: action.payload };
+    case LIST_LOGOUT:
+      return { loading: false, lists: [] };
     default:
       return state;
   }

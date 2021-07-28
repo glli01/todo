@@ -4,6 +4,8 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGOUT_SUCCESS,
 } from "../constants/userConstants";
+import { TASK_LOGOUT } from "../../tasks/constants/tasksConstants";
+import { LIST_LOGOUT } from "../../lists/constants/listsConstants";
 import axios from "axios";
 import bcrypt from "bcryptjs";
 // import bcrypt om "bcryptjs";
@@ -38,6 +40,8 @@ export const logoutUser = () => async (dispatch) => {
   try {
     const { data } = await axios.delete("/logout");
     dispatch({ type: USER_LOGOUT_SUCCESS });
+    dispatch({ type: LIST_LOGOUT });
+    dispatch({ type: TASK_LOGOUT });
   } catch (error) {
     console.log(`Error: ${error.message}`);
   }

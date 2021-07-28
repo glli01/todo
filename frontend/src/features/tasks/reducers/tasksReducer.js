@@ -7,6 +7,7 @@ import {
   TASK_ADD_FAIL,
   TASK_ADD_REQUEST,
   TASK_DELETE,
+  TASK_LOGOUT,
 } from "../constants/tasksConstants";
 
 export const tasksReducer = (state = { tasks: [] }, action) => {
@@ -43,6 +44,8 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
     case TASK_ADD_FAIL: {
       return { ...state, loading: false, error: action.payload };
     }
+    case TASK_LOGOUT:
+      return { loading: false, tasks: [] };
     default:
       return state;
   }

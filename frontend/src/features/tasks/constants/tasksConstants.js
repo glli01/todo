@@ -7,3 +7,4 @@ export const TASK_DELETE = "TASK_DELETE";
 export const TASK_ADD_SUCCESS = "TASK_ADD_SUCCESS";
 export const TASK_ADD_FAIL = "TASK_ADD_FAIL";
 export const TASK_ADD_REQUEST = "TASK_ADD_REQUEST";
+export const TASK_LOGOUT = "TASK_LOGOUT";
