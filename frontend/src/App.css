@@ -221,6 +221,10 @@ input[type="number"] {
 .tasks__completed-title:hover {
   color: rgb(100, 100, 100);
 }
+.task__delete {
+  width: 1rem;
+  cursor: pointer;
+}
 .tasks {
   overflow-y: auto;
   max-height: 75vh;

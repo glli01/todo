@@ -6,8 +6,10 @@ import {
   TASK_TOGGLE_COMPLETED,
   TASK_DELETE,
 } from "../features/tasks/constants/tasksConstants";
+import Icon from "./Icon";
 import { useState } from "react";
 import Hoverable from "./Hoverable";
+import trash from "../assets/img/trash.svg";
 // import { toggleCompleted } from "../features/tasks/actions/tasksActions";
 const Task = ({ item }) => {
   const [show, setShow] = useState(false);
@@ -63,9 +65,14 @@ const Task = ({ item }) => {
         <div className="task__title">{item.title}</div>
       </div>
       <Hoverable show={show}>
-        <span className="delete" onClick={clickDelete}>
-          delete
-        </span>
+        <Icon>
+          <img
+            className="task__delete"
+            src={trash}
+            onClick={clickDelete}
+            alt="trash"
+          />
+        </Icon>
       </Hoverable>
       {/* {item.description} */}
     </div>
