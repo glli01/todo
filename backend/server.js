@@ -145,7 +145,7 @@ app.post("/login/", async (req, res, next) => {
           expiresIn: "24h",
         });
         res.cookie("token", token, { httpOnly: true });
-        res.status(200).send({ token, email: user.email, name: user.name });
+        res.json({ ...user._doc, token });
       } else {
         throw new Error("Incorrect Email and password combination");
       }
