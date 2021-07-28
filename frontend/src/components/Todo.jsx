@@ -2,17 +2,17 @@ import React from "react";
 import Task from "./Task";
 import { useEffect } from "react";
 import Hideable from "./Hideable";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getAllTasks } from "../features/tasks/actions/tasksActions.js";
 
-const Todo = ({ list }) => {
-  const dispatch = useDispatch();
+const Todo = React.memo(({ list }) => {
+  // const dispatch = useDispatch();
   // const [tasks, setTasks] = useState([]);
   // let tasks = [];
   //useState("string")
-  useEffect(() => {
-    dispatch(getAllTasks());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllTasks());
+  // }, [dispatch]);
 
   const { tasks } = useSelector((state) => state.tasks);
   // const getAllTasks = async () => {
@@ -47,6 +47,6 @@ const Todo = ({ list }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Todo;

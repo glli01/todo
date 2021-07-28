@@ -5,8 +5,10 @@ import store from "./store";
 import "./index.css";
 import App from "./App";
 import { getLists } from "./features/lists/actions/listsActions.js";
+import { getAllTasks } from "./features/tasks/actions/tasksActions";
 
 store.dispatch(getLists()); //call get list from api
+store.dispatch(getAllTasks());
 
 ReactDOM.render(
   <React.StrictMode>

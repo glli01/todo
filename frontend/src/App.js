@@ -8,13 +8,13 @@ function App() {
   return (
     <>
       <Router>
+        <Route path="/login" component={LoginScreen} />
         <div className="main">
           <ListSidebar></ListSidebar>
 
           <div className="content">
             <Route path="/" component={HomeScreen} exact />
             <Route path="/lists/:id" component={ListScreen} />
-            <Route path="/login" component={LoginScreen} />
           </div>
         </div>
       </Router>

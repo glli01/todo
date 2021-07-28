@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import users from "../data/users.js";
+import passwords from "../data/password.js";
 import lists from "../data/listsCopy.js";
 import tasks from "../data/tasksCopy.js";
 import User from "../models/userModel.js";
 import Task from "../models/taskModel.js";
 import List from "../models/listModel.js";
+import Password from "../models/passwordModel.js";
 import connectDB from "./db.js";
 
 dotenv.config();
@@ -42,6 +44,15 @@ const importData = async () => {
     console.log("sample tasks" + sampleTasks);
 
     await Task.insertMany(sampleTasks);
+
+    const userPasswords = [];
+    for (let i = 0; i < createdUser.length; i++) {
+      userPasswords.push({
+        user: createdUser[i],
+        password: passwords[i].password,
+      });
+    }
+    await Password.insertMany(userPasswords);
 
     console.log("Data Imported!");
     process.exit();
