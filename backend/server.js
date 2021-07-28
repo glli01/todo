@@ -10,6 +10,8 @@ import Task from "./models/taskModel.js";
 import User from "./models/userModel.js";
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { errorHandler } from "./middleware/error.js";
 dotenv.config();
 
 connectDB(); //connects to mongoDB
@@ -20,18 +22,48 @@ const PORT = 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
+const getToken = (req) => {
+  const auth = req.get("authorization");
+  if (auth && auth.toLowerCase().startsWith("bearer ")) {
+    return auth.substring(7);
+  }
+  return null;
+};
+
+app.get("/", (req, res, next) => {
+  try {
+    const token = getToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    if (token) {
+      res.send(
+        `API is running and token is detected...\nToken is: \n Email: ${
+          decodedToken.email
+        }, \n Id: ${decodedToken.id} \n Expired: ${
+          Date.now() >= decodedToken.exp * 1000
+        }`
+      );
+    } else res.send("API is running...");
+  } catch (error) {
+    if (error.name === "JsonWebTokenError") {
+      console.log(`No Web token`);
+      next(error);
+    } else {
+      console.log(`Error: ${error.name} \n ${error.message}`);
+      res.send(`API is running... \n Authorization Issue: ${error.message}`);
+    }
+  }
 }); //= get request at localhost:3000/
 
-app.get("/api/tasks", async (req, res) => {
+app.get("/api/tasks", async (req, res, next) => {
   try {
     console.log("GET request to /api/tasks");
+    const token = getToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
     const query = await Task.find({});
     res.json(query);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.send(`Error: ${error.message}`);
+    next(error);
+    console.error(`${error.name} Error: ${error.message}`);
   }
 });
 
@@ -91,9 +123,17 @@ app.post("/login/", async (req, res) => {
     if (user) {
       console.log("User found with email, getting password hash");
       const response = await Password.findOne({ user: user._id });
-      const auth = bcrypt.compareSync(req.body.password, response.password);
+      const auth = await bcrypt.compare(req.body.password, response.password);
       if (auth) {
-        res.send(user);
+        const userForToken = {
+          email: user.email,
+          id: user._id,
+        };
+
+        const token = jwt.sign(userForToken, process.env.SECRET, {
+          expiresIn: "1m",
+        });
+        res.status(200).send({ token, email: user.email, name: user.name });
       } else {
         throw new Error("Incorrect Email and password combination");
       }
@@ -118,5 +158,7 @@ app.post("/api/tasks", async (req, res) => {
     res.send(`Error: ${error.message}`);
   }
 });
+
+app.use(errorHandler);
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`)); //listening to requests on port 5000.
