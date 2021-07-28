@@ -29,11 +29,12 @@ button:hover {
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 10vw;
   padding: 0 4rem;
   height: 100vh;
   background-color: white;
+  position: relative;
   box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.02);
 }
 
@@ -116,6 +117,36 @@ button:hover {
 
 .icon > .wrapper > img {
   object-fit: cover;
+}
+
+.user__profile-pic {
+  width: 2rem;
+  margin: 0 1rem;
+  opacity: 0.5;
+}
+
+.user--available {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  min-height: 2rem;
+  margin: 1rem;
+}
+
+.user--available:hover {
+  background-color: hsla(220, 23%, 97%, 1);
+}
+.user--unavailable {
+  position: relative;
+  width: 100%;
+  margin: 1rem;
+}
+
+.button {
+  width: fit-content;
 }
 
 .timer {
@@ -206,6 +237,10 @@ input[type="number"] {
 .completed .delete {
   text-decoration: none !important;
 }
+
+.button {
+  text-align: center;
+}
 .blue {
   background-color: #33b6ff;
 }
@@ -240,6 +275,7 @@ input[type="number"] {
   background-color: white;
   height: 100%;
   width: 100%;
+  z-index: +50;
   display: flex;
 }
 .login__form__input {
@@ -270,6 +306,19 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   height: 100%;
+}
+.wrapper--w100 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.wrapper--horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 @keyframes spin {
   from {

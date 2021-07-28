@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { Redirect } from "react-router";
+import { getAllTasks } from "../features/tasks/actions/tasksActions";
+import { getLists } from "../features/lists/actions/listsActions";
 const LoginScreen = () => {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -24,11 +26,13 @@ const LoginScreen = () => {
   useEffect(() => {
     if (success) {
       history.push("/");
+      dispatch(getAllTasks());
+      dispatch(getLists());
     }
   }, [success]);
   return (
     <>
-      {user._id && <Redirect to="/"></Redirect>}
+      {success && user._id && <Redirect to="/"></Redirect>}
       {
         <div className="login__wrapper">
           {loading ? (

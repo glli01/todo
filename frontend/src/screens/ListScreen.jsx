@@ -12,7 +12,7 @@ const ListScreen = ({ match }) => {
   const { loading, lists } = useSelector((state) => state.lists);
   useEffect(() => {
     console.log("dispatched in listScreen");
-    setList(lists.find((list) => list._id === match.params.id));
+    setList(lists ? lists.find((list) => list._id === match.params.id) : null);
     // dispatch(getList(match.params.id));
   }, [dispatch, match, lists]);
 
