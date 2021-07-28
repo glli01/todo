@@ -17,16 +17,15 @@ const UserAvailable = ({ user, profilePic }) => {
         {hovering ? (
           <div className="wrapper--w100">
             <div className="wrapper--horizontal">
-              <div className="button">
-                <Link
-                  to={"/logout"}
-                  onClick={() => {
-                    dispatch(logoutUser());
-                  }}
-                >
-                  Sign out{" "}
-                </Link>
-              </div>
+              <Link
+                className="button"
+                to={"/logout"}
+                onClick={() => {
+                  dispatch(logoutUser());
+                }}
+              >
+                Sign out{" "}
+              </Link>
             </div>
           </div>
         ) : (

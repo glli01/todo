@@ -44,11 +44,13 @@ const ListSidebar = () => {
           assetNoShow={arrowLeft}
         >
           <div className="sidebar__category">
-            {lists.map((list) => (
-              <List key={list._id} list={list}>
-                {" "}
-              </List>
-            ))}
+            {lists
+              ? lists.map((list) => (
+                  <List key={list._id} list={list}>
+                    {" "}
+                  </List>
+                ))
+              : ""}
           </div>
         </Hideable>
       </div>

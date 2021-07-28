@@ -133,6 +133,7 @@ button:hover {
   position: relative;
   width: 100%;
   min-height: 2rem;
+  z-index: +2;
   margin: 1rem;
 }
 
@@ -143,6 +144,10 @@ button:hover {
   position: relative;
   width: 100%;
   margin: 1rem;
+  min-height: 2rem;
+}
+.user--unavailable:hover {
+  background-color: hsla(220, 23%, 97%, 1);
 }
 
 .button {

@@ -13,9 +13,9 @@ const SidebarUser = () => {
         <div className="user--unavailable">
           <div className="wrapper">
             <div className="wrapper--horizontal">
-              <div className="button">
-                <Link to={"/login"}>Sign in </Link>
-              </div>
+              <Link to={"/login"} className="button">
+                Sign in{" "}
+              </Link>
             </div>
           </div>
         </div>
