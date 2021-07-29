@@ -7,6 +7,7 @@ import AddTask from "../components/AddTask";
 import Spinner from "../components/Spinner";
 import { useHistory } from "react-router-dom";
 import { LIST_SET_ACTIVE } from "../features/lists/constants/listsConstants";
+import { set } from "mongoose";
 
 const ListScreen = ({ match }) => {
   const listEl = useRef();
@@ -15,6 +16,7 @@ const ListScreen = ({ match }) => {
   const [listIndex, setListIndex] = useState(0);
   const dispatch = useDispatch();
   const { loading, lists } = useSelector((state) => state.lists);
+  const [showCompleted, setShowCompleted] = useState(false);
   // const { guest } = useSelector((state) => state.user);
   useEffect(() => {
     listEl && listEl.current && listEl.current.focus();
@@ -34,8 +36,8 @@ const ListScreen = ({ match }) => {
   }, [dispatch, match, lists]);
 
   const handleKeyDown = (e) => {
-    // console.log("key press detected");
-    // console.log(e.key);
+    console.log("key press detected");
+    console.log(e.key);
     // console.log(listIndex);
     // console.log(lists.length);
     if (e.key === "ArrowRight" && listIndex + 1 < lists.length) {
@@ -43,6 +45,9 @@ const ListScreen = ({ match }) => {
       history.push(`/lists/${lists[listIndex + 1]._id}`);
     } else if (e.key === "ArrowLeft" && listIndex - 1 >= 0) {
       history.push(`/lists/${lists[listIndex - 1]._id}`);
+    } else if (e.key === " ") {
+      // console.log("Spacebar detected");
+      setShowCompleted(!showCompleted);
     }
   };
   return (
@@ -59,7 +64,7 @@ const ListScreen = ({ match }) => {
               <Spinner></Spinner>
             ) : (
               <>
-                <Todo list={list}></Todo>
+                <Todo list={list} showCompleted={showCompleted}></Todo>
                 <AddTask list={list}></AddTask>
               </>
             )}

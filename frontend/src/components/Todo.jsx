@@ -5,7 +5,7 @@ import Hideable from "./Hideable";
 import { useSelector } from "react-redux";
 import { getAllTasks } from "../features/tasks/actions/tasksActions.js";
 
-const Todo = React.memo(({ list }) => {
+const Todo = React.memo(({ list, showCompleted = false }) => {
   // const dispatch = useDispatch();
   // const [tasks, setTasks] = useState([]);
   // let tasks = [];
@@ -35,6 +35,7 @@ const Todo = React.memo(({ list }) => {
         <Hideable
           title={"Show completed Tasks"}
           desiredClass="tasks__completed-title"
+          activeProp={showCompleted}
         >
           {tasks
             ? tasks

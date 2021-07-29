@@ -22,10 +22,6 @@ const PORT = 5000;
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use((req, next) => {
-//   jwt.verify(req.cookies.token, process.env.SECRET);
-//   next(req);
-// });
 
 const getCookieToken = (req) => {
   return req.cookies.token ? req.cookies.token : null;
