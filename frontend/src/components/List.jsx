@@ -5,7 +5,7 @@ const List = ({ list }) => {
     <div>
       <Link to={`/lists/${list._id}`}>
         <div className="sidebar__category__item">
-          <span className="wrapper">
+          <span className="wrapper--hi">
             <span
               className={
                 list.color

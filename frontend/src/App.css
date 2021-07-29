@@ -20,6 +20,9 @@ button:hover {
 }
 /* Implementing theme from dribbble by mikSkuza (KosmoTime) */
 .main {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

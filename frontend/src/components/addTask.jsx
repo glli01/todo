@@ -7,9 +7,11 @@ const AddTask = ({ list }) => {
   const dispatch = useDispatch();
   const { user, guest } = useSelector((state) => state.user);
   const [taskText, setTaskText] = useState("");
+
   const handleKeyDown = (e) => {
     const trimmedText = taskText.trim();
     if (e.which === 13 && trimmedText) {
+      // Not guest
       if (!guest) {
         dispatch(
           createNewTask({
@@ -20,6 +22,7 @@ const AddTask = ({ list }) => {
           })
         );
       } else {
+        // Guest
         const id = getGuestTaskId();
         createGuestTask(dispatch, id, list._id, trimmedText);
       }

@@ -9,6 +9,7 @@ import { LIST_LOGOUT } from "../../lists/constants/listsConstants";
 import axios from "axios";
 import bcrypt from "bcryptjs";
 import { getLists } from "../../lists/actions/listsActions.js";
+import { getAllTasks } from "../../tasks/actions/tasksActions";
 // import bcrypt om "bcryptjs";
 
 export const getUserWithToken = () => async (dispatch) => {
@@ -23,6 +24,7 @@ export const getUserWithToken = () => async (dispatch) => {
         success: true,
       });
       dispatch(getLists(false));
+      dispatch(getAllTasks(false));
     }
   } catch (error) {
     dispatch({
@@ -45,6 +47,7 @@ export const logoutUser = () => async (dispatch) => {
     dispatch({ type: LIST_LOGOUT });
     dispatch({ type: TASK_LOGOUT });
     dispatch(getLists(true));
+    dispatch(getAllTasks(true));
   } catch (error) {
     console.log(`Error: ${error.message}`);
   }

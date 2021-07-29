@@ -40,21 +40,28 @@ export const deleteTask =
     } else {
     }
   };
-export const getAllTasks = (task) => async (dispatch) => {
-  try {
-    dispatch({ type: TASK_REQUEST });
-    const { data } = await axios.get("/api/tasks");
-    dispatch({ type: TASK_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: TASK_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+export const getAllTasks =
+  (guest = false) =>
+  async (dispatch) => {
+    if (!guest) {
+      try {
+        dispatch({ type: TASK_REQUEST });
+        const { data } = await axios.get("/api/tasks");
+        dispatch({ type: TASK_SUCCESS, payload: data });
+      } catch (error) {
+        dispatch({
+          type: TASK_FAIL,
+          payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+        });
+      }
+    } else {
+      const state = JSON.parse(window.localStorage.getItem("state"));
+      dispatch({ type: TASK_SUCCESS, payload: state ? state.tasks : null });
+    }
+  };
 
 export const createNewTask =
   (task, guest = false) =>
