@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewTask } from "../features/tasks/actions/tasksActions.js";
+import { createGuestTask, getGuestTaskId } from "../guest/guestTasks.js";
 const AddTask = ({ list }) => {
   const dispatch = useDispatch();
   const { user, guest } = useSelector((state) => state.user);
@@ -19,24 +20,8 @@ const AddTask = ({ list }) => {
           })
         );
       } else {
-        const state = JSON.parse(window.localStorage.getItem("state"));
-        const tasks = state ? state.tasks : null;
-        const id = tasks
-          ? Math.max(...tasks.map((task) => Number(task._id))) + 1
-          : 0;
-        dispatch(
-          createNewTask(
-            {
-              _id: id.toString(),
-              title: trimmedText,
-              description: "no description",
-              list: list._id,
-              user: "guest",
-              isCompleted: false,
-            },
-            guest
-          )
-        );
+        const id = getGuestTaskId();
+        createGuestTask(dispatch, id, list._id, trimmedText);
       }
       setTaskText("");
     }
