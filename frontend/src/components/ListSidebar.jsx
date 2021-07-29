@@ -9,13 +9,22 @@ import arrowDown from "../assets/img/arrow-down.svg";
 import arrowLeft from "../assets/img/arrow-left.svg";
 import SidebarUser from "./SidebarUser";
 import AddList from "./AddList";
+import { useHistory } from "react-router";
 const ListSidebar = () => {
+  const history = useHistory();
   const { lists } = useSelector((state) => state.lists);
 
   return (
     <div className="sidebar">
       <div>
-        <div className="logo">TodoList</div>
+        <div
+          className="logo"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          TodoList
+        </div>
         <Hideable activeProp={false} title={"Today"}>
           <div className="sidebar__category">
             {lists

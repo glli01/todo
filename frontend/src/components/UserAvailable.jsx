@@ -18,7 +18,7 @@ const UserAvailable = ({ user, profilePic }) => {
           <div className="wrapper--w100">
             <div className="wrapper--horizontal">
               <Link
-                className="button"
+                className="button user__sign-out"
                 to={"/logout"}
                 onClick={() => {
                   dispatch(logoutUser());
@@ -30,10 +30,12 @@ const UserAvailable = ({ user, profilePic }) => {
           </div>
         ) : (
           <>
-            <Icon>
-              <img className="user__profile-pic" src={profilePic}></img>
-            </Icon>
-            <div className="wrapper">{user.name}</div>
+            <div className="user__wrapper--profile-pic">
+              <Icon>
+                <img className="user__profile-pic" src={profilePic}></img>
+              </Icon>
+            </div>
+            <div className="wrapper user--available__text">{user.name}</div>
           </>
         )}
       </div>
