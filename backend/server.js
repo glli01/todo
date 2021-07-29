@@ -94,6 +94,21 @@ app.put("/api/tasks/:id/complete", async (req, res, next) => {
   }
 });
 
+app.delete("/api/tasks/:id", async (req, res) => {
+  try {
+    console.log(`DELETE request to /api/tasks/${req.params.id}`);
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await Task.deleteOne({
+      user: decodedToken.id,
+      _id: req.params.id,
+    });
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get("/api/lists/:id", async (req, res, next) => {
   try {
     console.log(`GET request to /api/lists/${req.params.id}`);

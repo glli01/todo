@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewTask } from "../features/tasks/actions/tasksActions.js";
 import { createGuestTask, getGuestTaskId } from "../guest/guestTasks.js";
-const AddTask = ({ list }) => {
+const AddTask = React.forwardRef(({ list }, ref) => {
   const dispatch = useDispatch();
   const { user, guest } = useSelector((state) => state.user);
   const [taskText, setTaskText] = useState("");
@@ -37,8 +37,9 @@ const AddTask = ({ list }) => {
       onKeyDown={handleKeyDown}
       placeholder="Add a task..."
       className="task__input"
+      ref={ref}
     ></input>
   );
-};
+});
 
 export default AddTask;

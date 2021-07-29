@@ -26,7 +26,7 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
     case TASK_FAIL:
       return { loading: false, error: action.payload };
     case TASK_TOGGLE_COMPLETED: {
-      const newTasks = [...state.tasks];
+      let newTasks = [...state.tasks];
       const index = newTasks.findIndex((task) => task._id === action.id);
       newTasks[index] = {
         ...newTasks[index],
@@ -84,9 +84,13 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       };
     }
     case TASK_PUT_SUCCESS: {
-      const newTasks = state.tasks;
-      newTasks && newTasks.filter((task) => task._id !== action.payload._id);
-      newTasks.push(action.payload);
+      const newTasks = [...state.tasks];
+      if (newTasks) {
+        const index = newTasks.findIndex(
+          (task) => task._id === action.payload._id
+        );
+        newTasks[index] = action.payload;
+      }
       return { ...state, tasks: newTasks };
     }
     case TASK_LOGOUT:

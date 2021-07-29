@@ -35,7 +35,6 @@ const Task = ({ item }) => {
   };
   const clickToggle = () => {
     dispatch(toggleTaskCompleted(item._id));
-    dispatch({ type: TASK_TOGGLE_COMPLETED, id: item._id });
   };
   const clickDelete = () => {
     dispatch({ type: TASK_DELETE, id: item._id });
