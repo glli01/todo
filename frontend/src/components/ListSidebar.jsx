@@ -52,8 +52,8 @@ const ListSidebar = () => {
                   </List>
                 ))
               : ""}
+            <AddList></AddList>
           </div>
-          <AddList></AddList>
         </Hideable>
       </div>
       <SidebarUser></SidebarUser>

@@ -38,7 +38,7 @@ const AddList = () => {
       onChange={(e) => setListText(e.currentTarget.value)}
       onKeyDown={handleKeyDown}
       placeholder="Add a list..."
-      className="list__input"
+      className=" sidebar__category__item list__input"
     ></input>
   );
 };
