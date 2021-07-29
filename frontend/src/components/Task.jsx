@@ -10,6 +10,7 @@ import Icon from "./Icon";
 import { useState } from "react";
 import Hoverable from "./Hoverable";
 import trash from "../assets/img/trash.svg";
+import { toggleTaskCompleted } from "../features/tasks/actions/tasksActions.js";
 // import { toggleCompleted } from "../features/tasks/actions/tasksActions";
 const Task = ({ item }) => {
   const [show, setShow] = useState(false);
@@ -33,6 +34,7 @@ const Task = ({ item }) => {
     e.currentTarget.src = checkmarkUnfilled;
   };
   const clickToggle = () => {
+    dispatch(toggleTaskCompleted(item._id));
     dispatch({ type: TASK_TOGGLE_COMPLETED, id: item._id });
   };
   const clickDelete = () => {

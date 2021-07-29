@@ -12,6 +12,9 @@ import {
   TASK_DELETE_SUCCESS,
   TASK_ADD_LOCAL,
   TASK_DELETE,
+  TASK_PUT_FAIL,
+  TASK_PUT_REQUEST,
+  TASK_PUT_SUCCESS,
 } from "../constants/tasksConstants";
 import axios from "axios";
 import { bindActionCreators } from "redux";
@@ -40,6 +43,26 @@ export const deleteTask =
     } else {
     }
   };
+
+export const toggleTaskCompleted = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: TASK_PUT_REQUEST });
+    const { data } = await axios.put(`/api/tasks/${id}/complete`);
+    if (data) {
+      dispatch({ type: TASK_PUT_SUCCESS, payload: data });
+    } else {
+      throw new Error("Failed to delete task.");
+    }
+  } catch (error) {
+    dispatch({
+      type: TASK_PUT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 export const getAllTasks =
   (guest = false) =>
   async (dispatch) => {

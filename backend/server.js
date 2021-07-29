@@ -81,6 +81,23 @@ app.get("/api/lists", async (req, res, next) => {
   }
 });
 
+app.put("/api/tasks/:id/complete", async (req, res, next) => {
+  try {
+    console.log(`PUT request to /api/tasks/${req.params.id}/complete`);
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await Task.findOne({
+      user: decodedToken.id,
+      _id: req.params.id,
+    });
+    response.isCompleted = !response.isCompleted;
+    const saveResponse = await response.save();
+    res.json(saveResponse);
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get("/api/lists/:id", async (req, res, next) => {
   try {
     console.log(`GET request to /api/lists/${req.params.id}`);
