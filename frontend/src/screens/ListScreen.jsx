@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddTask from "../components/AddTask";
 import Spinner from "../components/Spinner";
 import { useHistory } from "react-router-dom";
+import { LIST_SET_ACTIVE } from "../features/lists/constants/listsConstants";
 
 const ListScreen = ({ match }) => {
   const listEl = useRef();
@@ -14,17 +15,21 @@ const ListScreen = ({ match }) => {
   const [listIndex, setListIndex] = useState(0);
   const dispatch = useDispatch();
   const { loading, lists } = useSelector((state) => state.lists);
-  const { guest } = useSelector((state) => state.user);
+  // const { guest } = useSelector((state) => state.user);
   useEffect(() => {
     listEl && listEl.current && listEl.current.focus();
     console.log(listEl);
     // console.log(lists);
     // console.log("dispatched in listScreen");
     // console.log(lists.find((list) => list._id === match.params.id));
-    setList(lists ? lists.find((list) => list._id === match.params.id) : null);
+    const list = lists
+      ? lists.find((list) => list._id === match.params.id)
+      : null;
+    setList(list);
     setListIndex(
       lists ? lists.findIndex((list) => list._id === match.params.id) : 0
     );
+    dispatch({ type: LIST_SET_ACTIVE, payload: list });
     // dispatch(getList(match.params.id));
   }, [dispatch, match, lists]);
 

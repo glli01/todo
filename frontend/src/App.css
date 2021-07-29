@@ -67,6 +67,14 @@ button:hover {
   margin-left: 2rem;
   display: flex;
 }
+.sidebar__category__item--active {
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin: 0.1rem;
+  margin-left: 2rem;
+  display: flex;
+  font-weight: 600;
+}
 .content {
   margin: 0 auto;
   width: 50vw;
