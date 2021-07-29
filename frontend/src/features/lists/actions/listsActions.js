@@ -32,7 +32,8 @@ export const getLists =
         });
       }
     } else {
-      const state = window.localStorage.getItem("state");
+      const state = JSON.parse(window.localStorage.getItem("state"));
+      dispatch({ type: LIST_SUCCESS, payload: state ? state.lists : null });
     }
   };
 

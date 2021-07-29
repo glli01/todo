@@ -15,7 +15,7 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loading, message, success, error, user } = useSelector(
+  const { loading, message, success, error, user, guest } = useSelector(
     (state) => state.user
   );
   const handleKeyDown = (e) => {
@@ -28,7 +28,7 @@ const LoginScreen = () => {
     if (success) {
       history.push("/");
       dispatch(getAllTasks());
-      dispatch(getLists());
+      dispatch(getLists(guest));
     }
   }, [success]);
   return (

@@ -8,6 +8,7 @@ import { TASK_LOGOUT } from "../../tasks/constants/tasksConstants";
 import { LIST_LOGOUT } from "../../lists/constants/listsConstants";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import { getLists } from "../../lists/actions/listsActions.js";
 // import bcrypt om "bcryptjs";
 
 export const getUserWithToken = () => async (dispatch) => {
@@ -21,6 +22,7 @@ export const getUserWithToken = () => async (dispatch) => {
         message: "Success",
         success: true,
       });
+      dispatch(getLists(false));
     }
   } catch (error) {
     dispatch({
