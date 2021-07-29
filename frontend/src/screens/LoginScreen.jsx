@@ -85,7 +85,15 @@ const LoginScreen = () => {
                   </Link>
                 </div>
               </div>
-              <div className="login__message">{success ? message : error}</div>
+              <div
+                className={
+                  success
+                    ? "login__message--success"
+                    : "login__message--failure"
+                }
+              >
+                {success ? message : error}
+              </div>
             </div>
           )}
         </div>

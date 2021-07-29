@@ -310,10 +310,6 @@ input[type="number"] {
 .login__button--submit {
   width: 100%;
 }
-.login__message {
-  width: 100%;
-  text-align: center;
-}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -339,6 +335,23 @@ input[type="number"] {
   justify-content: center;
   width: 100%;
 }
+.login__message--success {
+  color: green;
+  width: 100%;
+  text-align: center;
+}
+.login__message--failure {
+  color: red;
+  width: 100%;
+  text-align: center;
+}
+.list__screen {
+  width: 80%;
+  height: 80%;
+}
+/* div:focus {
+  border: 1px solid black;
+} */
 @keyframes spin {
   from {
     transform: rotate(0deg);
