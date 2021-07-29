@@ -12,16 +12,20 @@ import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { errorHandler } from "./middleware/error.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 connectDB(); //connects to mongoDB
 
 const app = express(); //call method express and set to app;
 const PORT = 5000;
-
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const getCookieToken = (req) => {
+  return req.cookies.token ? req.cookies.token : null;
+};
 const getToken = (req) => {
   const auth = req.get("authorization");
   if (auth && auth.toLowerCase().startsWith("bearer ")) {
@@ -32,34 +36,28 @@ const getToken = (req) => {
 
 app.get("/", (req, res, next) => {
   try {
-    const token = getToken(req);
+    const token = getCookieToken(req);
     const decodedToken = jwt.verify(token, process.env.SECRET);
     if (token) {
       res.send(
-        `API is running and token is detected...\nToken is: \n Email: ${
-          decodedToken.email
-        }, \n Id: ${decodedToken.id} \n Expired: ${
+        `API is running and token is detected...<br>
+        Token is: <br>
+         Email: ${decodedToken.email}, Id: ${decodedToken.id}, Expired: ${
           Date.now() >= decodedToken.exp * 1000
         }`
       );
     } else res.send("API is running...");
   } catch (error) {
-    if (error.name === "JsonWebTokenError") {
-      console.log(`No Web token`);
-      next(error);
-    } else {
-      console.log(`Error: ${error.name} \n ${error.message}`);
-      res.send(`API is running... \n Authorization Issue: ${error.message}`);
-    }
+    next(error);
   }
 }); //= get request at localhost:3000/
 
 app.get("/api/tasks", async (req, res, next) => {
   try {
     console.log("GET request to /api/tasks");
-    const token = getToken(req);
+    const token = getCookieToken(req);
     const decodedToken = jwt.verify(token, process.env.SECRET);
-    const query = await Task.find({});
+    const query = await Task.find({ user: decodedToken.id });
     res.json(query);
   } catch (error) {
     next(error);
@@ -67,56 +65,82 @@ app.get("/api/tasks", async (req, res, next) => {
   }
 });
 
-app.get("/api/lists", async (req, res) => {
+app.get("/api/lists", async (req, res, next) => {
   try {
     console.log("GET request to /api/lists");
-    const response = await List.find({});
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await List.find({ user: decodedToken.id });
     res.json(response);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.send(`Error: ${error.message}`);
+    next(error);
   }
 });
 
-app.get("/api/lists/:id", async (req, res) => {
+app.put("/api/tasks/:id/complete", async (req, res, next) => {
+  try {
+    console.log(`PUT request to /api/tasks/${req.params.id}/complete`);
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await Task.findOne({
+      user: decodedToken.id,
+      _id: req.params.id,
+    });
+    response.isCompleted = !response.isCompleted;
+    const saveResponse = await response.save();
+    res.json(saveResponse);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/lists/:id", async (req, res, next) => {
   try {
     console.log(`GET request to /api/lists/${req.params.id}`);
-    const response = await List.findOne({ _id: req.params.id });
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await List.findOne({
+      user: decodedToken.id,
+      _id: req.params.id,
+    });
     res.json(response);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.send(`Error: ${error.message}`);
+    next(error);
   }
 });
 
-app.get("/api/tasks/:id", async (req, res) => {
+app.get("/api/tasks/:id", async (req, res, next) => {
   try {
     console.log(`GET request to /api/tasks/${req.params.id}`);
-    const response = await Task.findOne({ _id: req.params.id });
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await Task.findOne({
+      user: decodedToken.id,
+      _id: req.params.id,
+    });
     res.json(response);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.send(`Error: ${error.message}`);
+    next(error);
   }
 });
 
-//returns user object with hash value.
-app.get("/login/", async (req, res) => {
-  if (req.query.email) {
-    try {
-      console.log(`GET request to /login/${req.query.email}`);
-      const response = await User.findOne({ email: req.query.email });
-      res.json(response);
-    } catch (error) {
-      console.error(`Error: ${error.message}`);
-      res.send(`Error: ${error.message}`);
-    }
-  } else {
-    console.error("Please enter your email.");
-  }
-});
+// //returns user object with hash value.
+// app.get("/login/", async (req, res) => {
+//   if (req.query.email) {
+//     try {
+//       console.log(`GET request to /login/${req.query.email}`);
+//       const response = await User.findOne({ email: req.query.email });
+//       res.json(response);
+//     } catch (error) {
+//       console.error(`Error: ${error.message}`);
+//       res.send(`Error: ${error.message}`);
+//     }
+//   } else {
+//     console.error("Please enter your email.");
+//   }
+// });
 
-app.post("/login/", async (req, res) => {
+app.post("/login/", async (req, res, next) => {
   try {
     console.log(`POST request to /login/`);
     const user = await User.findOne({ email: req.body.email });
@@ -131,9 +155,10 @@ app.post("/login/", async (req, res) => {
         };
 
         const token = jwt.sign(userForToken, process.env.SECRET, {
-          expiresIn: "1m",
+          expiresIn: "24h",
         });
-        res.status(200).send({ token, email: user.email, name: user.name });
+        res.cookie("token", token, { httpOnly: true });
+        res.json({ ...user._doc, token });
       } else {
         throw new Error("Incorrect Email and password combination");
       }
@@ -141,12 +166,33 @@ app.post("/login/", async (req, res) => {
       throw new Error("Account not found");
     }
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.send(`Error: ${error.message}`);
+    next(error);
   }
 });
 
-app.post("/api/tasks", async (req, res) => {
+app.delete("/logout", (req, res, next) => {
+  try {
+    console.log(`DELETE request to /logout`);
+    res.cookie("token", "12345", { httpOnly: true });
+    res.status(200).send("Logout success");
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/login/verify", async (req, res, next) => {
+  console.log(`GET request to /login/verify`);
+  try {
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const user = await User.findOne({ _id: decodedToken.id });
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/tasks", async (req, res, next) => {
   try {
     console.log(`POST request to /api/tasks`);
     // console.log(req.body);
@@ -154,8 +200,7 @@ app.post("/api/tasks", async (req, res) => {
     console.log(response);
     res.json(response);
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.send(`Error: ${error.message}`);
+    next(error);
   }
 });
 

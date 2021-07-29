@@ -20,6 +20,9 @@ button:hover {
 }
 /* Implementing theme from dribbble by mikSkuza (KosmoTime) */
 .main {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -29,11 +32,12 @@ button:hover {
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 10vw;
   padding: 0 4rem;
   height: 100vh;
   background-color: white;
+  position: relative;
   box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.02);
 }
 
@@ -62,6 +66,14 @@ button:hover {
   margin: 0.1rem;
   margin-left: 2rem;
   display: flex;
+}
+.sidebar__category__item--active {
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin: 0.1rem;
+  margin-left: 2rem;
+  display: flex;
+  font-weight: 600;
 }
 .content {
   margin: 0 auto;
@@ -116,6 +128,42 @@ button:hover {
 
 .icon > .wrapper > img {
   object-fit: cover;
+}
+
+.user__profile-pic {
+  width: 2rem;
+  margin: 0 1rem;
+  opacity: 0.5;
+}
+
+.user--available {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  min-height: 2rem;
+  z-index: +2;
+  margin: 1rem;
+}
+
+.user--available:hover {
+  background-color: hsla(220, 23%, 97%, 1);
+}
+.user--unavailable {
+  position: relative;
+  width: 100%;
+  margin: 1rem;
+  min-height: 2rem;
+}
+.user--unavailable:hover {
+  background-color: hsla(220, 23%, 97%, 1);
+}
+
+.button {
+  width: fit-content;
 }
 
 .timer {
@@ -185,6 +233,10 @@ input[type="number"] {
 .tasks__completed-title:hover {
   color: rgb(100, 100, 100);
 }
+.task__delete {
+  width: 1rem;
+  cursor: pointer;
+}
 .tasks {
   overflow-y: auto;
   max-height: 75vh;
@@ -205,6 +257,10 @@ input[type="number"] {
 }
 .completed .delete {
   text-decoration: none !important;
+}
+
+.button {
+  text-align: center;
 }
 .blue {
   background-color: #33b6ff;
@@ -240,6 +296,7 @@ input[type="number"] {
   background-color: white;
   height: 100%;
   width: 100%;
+  z-index: +50;
   display: flex;
 }
 .login__form__input {
@@ -261,16 +318,48 @@ input[type="number"] {
 .login__button--submit {
   width: 100%;
 }
-.login__message {
-  width: 100%;
-  text-align: center;
-}
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
 }
+.wrapper--hi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+}
+.wrapper--w100 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.wrapper--horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.login__message--success {
+  color: green;
+  width: 100%;
+  text-align: center;
+}
+.login__message--failure {
+  color: red;
+  width: 100%;
+  text-align: center;
+}
+.list__screen {
+  width: 80%;
+  height: 80%;
+}
+/* div:focus {
+  border: 1px solid black;
+} */
 @keyframes spin {
   from {
     transform: rotate(0deg);

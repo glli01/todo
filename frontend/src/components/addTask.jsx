@@ -1,23 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { TASK_ADD } from "../features/tasks/constants/tasksConstants";
+import { useDispatch, useSelector } from "react-redux";
 import { createNewTask } from "../features/tasks/actions/tasksActions.js";
+import { createGuestTask, getGuestTaskId } from "../guest/guestTasks.js";
 const AddTask = ({ list }) => {
   const dispatch = useDispatch();
+  const { user, guest } = useSelector((state) => state.user);
   const [taskText, setTaskText] = useState("");
+
   const handleKeyDown = (e) => {
     const trimmedText = taskText.trim();
     if (e.which === 13 && trimmedText) {
-      console.log("got enter key");
-      dispatch(
-        createNewTask({
-          title: trimmedText,
-          description: "no description",
-          list: list._id,
-          user: "60f5f4497dd7b2277481702e",
-        })
-      );
+      // Not guest
+      if (!guest) {
+        dispatch(
+          createNewTask({
+            title: trimmedText,
+            description: "no description",
+            list: list._id,
+            user: user._id,
+          })
+        );
+      } else {
+        // Guest
+        const id = getGuestTaskId();
+        createGuestTask(dispatch, id, list._id, trimmedText);
+      }
       setTaskText("");
     }
   };

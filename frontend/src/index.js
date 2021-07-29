@@ -7,9 +7,8 @@ import App from "./App";
 import { getLists } from "./features/lists/actions/listsActions.js";
 import { getAllTasks } from "./features/tasks/actions/tasksActions";
 
-store.dispatch(getLists()); //call get list from api
-store.dispatch(getAllTasks());
-
+store.dispatch(getLists(true)); //call get list from api
+store.dispatch(getAllTasks(true));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
