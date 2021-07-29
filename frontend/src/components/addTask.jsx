@@ -19,16 +19,20 @@ const AddTask = ({ list }) => {
           })
         );
       } else {
-        const tasks = window.localStorage.getItem("tasks");
-        const id = Math.max(tasks.map((task) => task._id)) + 1;
+        const state = JSON.parse(window.localStorage.getItem("state"));
+        const tasks = state ? state.tasks : null;
+        const id = tasks
+          ? Math.max(...tasks.map((task) => Number(task._id))) + 1
+          : 0;
         dispatch(
           createNewTask(
             {
-              _id: id,
+              _id: id.toString(),
               title: trimmedText,
               description: "no description",
               list: list._id,
               user: "guest",
+              isCompleted: false,
             },
             guest
           )

@@ -49,7 +49,9 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       return {
         ...state,
         loading: false,
-        tasks: [...state.tasks, { ...action.payload }],
+        tasks: state.tasks
+          ? [...state.tasks, { ...action.payload }]
+          : [{ ...action.payload }],
       };
     }
     case TASK_ADD_REQUEST: {
@@ -59,7 +61,13 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       return { ...state, loading: false, error: action.payload };
     }
     case TASK_ADD_LOCAL: {
-      return { ...state, guest: true, tasks: [...state.tasks, action.payload] };
+      return {
+        ...state,
+        guest: true,
+        tasks: state.tasks
+          ? [...state.tasks, action.payload]
+          : [action.payload],
+      };
     }
     case TASK_LOGOUT:
       return { loading: false, tasks: [] };

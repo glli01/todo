@@ -74,10 +74,12 @@ export const createNewTask =
         });
       }
     } else {
-      const newTasks = [...window.localStorage.getItem("tasks")];
-      newTasks.push(task);
-      window.localStorage.setItem("tasks", newTasks);
-      dispatch({ type: TASK_ADD_LOCAL, payload: task });
+      const state = JSON.parse(window.localStorage.getItem("state"));
+      const newState = state
+        ? { ...state, tasks: state.tasks ? [...state.tasks, task] : [task] }
+        : { tasks: [task] };
+      window.localStorage.setItem("state", JSON.stringify(newState));
+      dispatch({ type: TASK_ADD_SUCCESS, payload: task });
     }
   };
 
