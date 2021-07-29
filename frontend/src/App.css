@@ -132,6 +132,7 @@ button:hover {
   text-align: left;
   position: relative;
   width: 100%;
+  height: fit-content;
   min-height: 2rem;
   z-index: +2;
   margin: 1rem;
@@ -315,6 +316,12 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   height: 100%;
+}
+.wrapper--hi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
 }
 .wrapper--w100 {
   display: flex;

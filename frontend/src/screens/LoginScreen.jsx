@@ -1,5 +1,6 @@
 import React from "react";
 // import bcrypt from "bcryptjs";
+import { USER_SET_GUEST } from "../features/user/constants/userConstants";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/user/actions/userActions";
@@ -72,6 +73,18 @@ const LoginScreen = () => {
                   login
                 </button>
               </Link>
+              <div
+                className="wrapper"
+                onClick={() => {
+                  dispatch({ type: USER_SET_GUEST });
+                }}
+              >
+                <div className="wrapper--horizontal">
+                  <Link className="button" to={`/`}>
+                    Continue as Guest
+                  </Link>
+                </div>
+              </div>
               <div className="login__message">{success ? message : error}</div>
             </div>
           )}

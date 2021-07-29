@@ -8,6 +8,7 @@ import Timer from "./Timer";
 import arrowDown from "../assets/img/arrow-down.svg";
 import arrowLeft from "../assets/img/arrow-left.svg";
 import SidebarUser from "./SidebarUser";
+import AddList from "./AddList";
 const ListSidebar = () => {
   const { lists } = useSelector((state) => state.lists);
 
@@ -52,6 +53,7 @@ const ListSidebar = () => {
                 ))
               : ""}
           </div>
+          <AddList></AddList>
         </Hideable>
       </div>
       <SidebarUser></SidebarUser>

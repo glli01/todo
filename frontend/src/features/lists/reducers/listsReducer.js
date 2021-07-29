@@ -7,6 +7,7 @@ import {
   LIST_DETAILS_REQUEST,
   LIST_DETAILS_SUCCESS,
   LIST_LOGOUT,
+  LIST_ADD_LOCAL,
 } from "../constants/listsConstants";
 
 export const listsReducer = (state = { lists: [] }, action) => {
@@ -19,6 +20,13 @@ export const listsReducer = (state = { lists: [] }, action) => {
       return { loading: false, error: action.payload };
     case LIST_LOGOUT:
       return { loading: false, lists: [] };
+    case LIST_ADD_LOCAL:
+      return {
+        ...state,
+        lists: state.lists
+          ? [...state.lists, action.payload]
+          : [action.payload],
+      };
     default:
       return state;
   }
