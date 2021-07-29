@@ -148,6 +148,7 @@ button:hover {
   text-align: left;
   position: relative;
   width: 100%;
+  min-height: 2rem;
   height: fit-content;
   min-height: 2rem;
   z-index: +2;
@@ -161,6 +162,8 @@ button:hover {
 
 .user__sign-out {
   color: red;
+  width: 100%;
+  margin: 0;
 }
 
 .user--available:hover {
@@ -177,7 +180,7 @@ button:hover {
 }
 
 .button {
-  width: fit-content;
+  width: 100%;
 }
 
 .timer {
