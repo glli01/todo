@@ -44,6 +44,7 @@ export const logoutUser = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT_SUCCESS });
     dispatch({ type: LIST_LOGOUT });
     dispatch({ type: TASK_LOGOUT });
+    dispatch(getLists(true));
   } catch (error) {
     console.log(`Error: ${error.message}`);
   }
