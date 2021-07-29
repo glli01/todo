@@ -20,7 +20,6 @@ const ListScreen = ({ match }) => {
   const { loading, lists } = useSelector((state) => state.lists);
   const { tasks } = useSelector((state) => state.tasks);
   const [showCompleted, setShowCompleted] = useState(false);
-  const guest = useSelector((state) => state.user.guest);
 
   useEffect(() => {
     listEl && listEl.current && listEl.current.focus();
@@ -59,7 +58,7 @@ const ListScreen = ({ match }) => {
       );
       const taskToComplete = filteredTasks ? filteredTasks[0] : null;
       if (taskToComplete) {
-        dispatch(toggleTaskCompleted(taskToComplete._id, guest));
+        dispatch(toggleTaskCompleted(taskToComplete._id));
       }
     } else if (
       e.key === "Enter" &&

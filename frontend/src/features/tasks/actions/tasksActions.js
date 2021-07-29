@@ -44,32 +44,26 @@ export const deleteTask =
     }
   };
 
-export const toggleTaskCompleted =
-  (id, guest = false) =>
-  async (dispatch) => {
-    if (!guest) {
-      try {
-        dispatch({ type: TASK_PUT_REQUEST });
-        dispatch({ type: TASK_TOGGLE_COMPLETED, id: id });
-        const { data } = await axios.put(`/api/tasks/${id}/complete`);
-        if (data) {
-          dispatch({ type: TASK_PUT_SUCCESS, payload: data });
-        } else {
-          throw new Error("Failed to delete task.");
-        }
-      } catch (error) {
-        dispatch({
-          type: TASK_PUT_FAIL,
-          payload:
-            error.response && error.response.data.message
-              ? error.response.data.message
-              : error.message,
-        });
-      }
+export const toggleTaskCompleted = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: TASK_PUT_REQUEST });
+    dispatch({ type: TASK_TOGGLE_COMPLETED, id: id });
+    const { data } = await axios.put(`/api/tasks/${id}/complete`);
+    if (data) {
+      dispatch({ type: TASK_PUT_SUCCESS, payload: data });
     } else {
-      dispatch({ type: TASK_TOGGLE_COMPLETED, id: id });
+      throw new Error("Failed to delete task.");
     }
-  };
+  } catch (error) {
+    dispatch({
+      type: TASK_PUT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 export const getAllTasks =
   (guest = false) =>
   async (dispatch) => {

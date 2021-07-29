@@ -19,7 +19,6 @@ const Task = ({ item }) => {
     (state) => state.tasks.tasks.find((task) => task === item),
     shallowEqual
   );
-  const guest = useSelector((state) => state.user.guest);
   // const [complete, setComplete] = useState(item.isCompleted);
 
   // const markAsIncomplete = () => {
@@ -35,7 +34,7 @@ const Task = ({ item }) => {
     e.currentTarget.src = checkmarkUnfilled;
   };
   const clickToggle = () => {
-    dispatch(toggleTaskCompleted(item._id, guest));
+    dispatch(toggleTaskCompleted(item._id));
   };
   const clickDelete = () => {
     dispatch({ type: TASK_DELETE, id: item._id });
