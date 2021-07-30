@@ -25,9 +25,10 @@ export const deleteTask =
     if (!guest) {
       try {
         dispatch({ type: TASK_DELETE_REQUEST });
-        const { data } = await axios.delete(`/tasks/${task._id}`);
-        if (data && data.success === true) {
-          dispatch({ type: TASK_DELETE_SUCCESS });
+        dispatch({ type: TASK_DELETE, id: task._id });
+        const data = await axios.delete(`/api/tasks/${task._id}`);
+        if (data) {
+          dispatch({ type: TASK_DELETE_SUCCESS, id: task._id });
         } else {
           throw new Error("Failed to delete task.");
         }
@@ -38,9 +39,21 @@ export const deleteTask =
             error.response && error.response.data.message
               ? error.response.data.message
               : error.message,
+          original: task,
         });
       }
     } else {
+      const state = JSON.parse(window.localStorage.getItem("state"));
+      const newState = state
+        ? {
+            ...state,
+            tasks: state.tasks
+              ? [...state.tasks].filter((tasc) => tasc._id !== task._id)
+              : [],
+          }
+        : { tasks: [task] };
+      window.localStorage.setItem("state", JSON.stringify(newState));
+      dispatch({ type: TASK_DELETE_SUCCESS, payload: task });
     }
   };
 
@@ -70,6 +83,7 @@ export const toggleTaskCompleted =
       dispatch({ type: TASK_TOGGLE_COMPLETED, id: id });
     }
   };
+
 export const getAllTasks =
   (guest = false) =>
   async (dispatch) => {

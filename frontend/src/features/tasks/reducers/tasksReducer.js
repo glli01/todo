@@ -42,7 +42,10 @@ export const tasksReducer = (state = { tasks: [] }, action) => {
       return { ...state, loading: true };
     }
     case TASK_DELETE_FAIL: {
-      return { ...state, loading: false, error: action.error };
+      const newTasks = state.tasks
+        ? [action.original, ...state.tasks]
+        : [action.original];
+      return { ...state, loading: false, error: action.error, tasks: newTasks };
     }
     case TASK_DELETE_SUCCESS: {
       const newTasks = state.tasks.filter((task) => task._id !== action.id);

@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("build"));
+// app.use(express.static("build"));
 // app.use(cors())
 
 const getCookieToken = (req) => {
