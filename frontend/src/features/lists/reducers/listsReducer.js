@@ -2,13 +2,16 @@ import {
   LIST_SUCCESS,
   LIST_FAIL,
   LIST_REQUEST,
-  // LIST_ADD,
+  LIST_ADD,
   LIST_DETAILS_FAIL,
   LIST_DETAILS_REQUEST,
   LIST_DETAILS_SUCCESS,
   LIST_LOGOUT,
-  LIST_ADD_LOCAL,
+  LIST_ADD_SUCCESS,
+  // LIST_ADD_LOCAL,
   LIST_SET_ACTIVE,
+  LIST_ADD_REQUEST,
+  LIST_ADD_FAIL,
 } from "../constants/listsConstants";
 
 export const listsReducer = (state = { lists: [] }, action) => {
@@ -21,13 +24,35 @@ export const listsReducer = (state = { lists: [] }, action) => {
       return { loading: false, error: action.payload };
     case LIST_LOGOUT:
       return { loading: false, lists: [] };
-    case LIST_ADD_LOCAL:
+    case LIST_ADD:
       return {
         ...state,
         lists: state.lists
           ? [...state.lists, action.payload]
           : [action.payload],
       };
+    case LIST_ADD_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        lists: state.lists
+          ? [...state.lists, action.payload]
+          : [action.payload],
+      };
+    }
+    case LIST_ADD_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case LIST_ADD_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
     case LIST_SET_ACTIVE:
       return { ...state, active: action.payload };
     default:

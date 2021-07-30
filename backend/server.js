@@ -195,6 +195,17 @@ app.get("/login/verify", async (req, res, next) => {
   }
 });
 
+app.post("/api/lists", async (req, res, next) => {
+  console.log(`POST request to /api/lists`);
+  try {
+    const response = await List.create(req.body);
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.post("/api/tasks", async (req, res, next) => {
   try {
     console.log(`POST request to /api/tasks`);

@@ -12,6 +12,18 @@ const AddList = () => {
     const trimmedText = listText.trim();
     if (e.which === 13 && trimmedText) {
       if (!guest) {
+        dispatch(
+          addList(
+            {
+              title: trimmedText,
+              description: "no description",
+              color: "blue",
+              user: user._id,
+            },
+            guest
+          )
+        );
+        setListText("");
       } else {
         const id = getGuestListID();
         dispatch(

@@ -4,8 +4,11 @@ import {
   LIST_REQUEST,
   LIST_DETAILS_REQUEST,
   LIST_DETAILS_FAIL,
-  LIST_ADD_LOCAL,
+  LIST_ADD,
   LIST_DETAILS_SUCCESS,
+  LIST_ADD_REQUEST,
+  LIST_ADD_FAIL,
+  LIST_ADD_SUCCESS,
 } from "../constants/listsConstants";
 import axios from "axios";
 
@@ -37,19 +40,38 @@ export const getLists =
     }
   };
 
-export const addList = (list, guest) => async (dispatch) => {
-  if (!guest) {
-  } else {
-    const state = JSON.parse(window.localStorage.getItem("state"));
-    const newState = state
-      ? { ...state, lists: [...state.lists, list] }
-      : { lists: [list] };
-    window.localStorage.setItem("state", JSON.stringify(newState));
-    // console.log("local storage set");
-    // console.log(window.localStorage.getItem("state"));
-    dispatch({ type: LIST_ADD_LOCAL, payload: list });
-  }
-};
+export const addList =
+  (list, guest = false) =>
+  async (dispatch) => {
+    if (!guest) {
+      try {
+        dispatch({ type: LIST_ADD_REQUEST });
+        const { data } = await axios.post("/api/lists", list);
+        console.log("got data and it is");
+        console.log(data);
+        if (data && data._id) {
+          dispatch({ type: LIST_ADD_SUCCESS, payload: data });
+        }
+      } catch (error) {
+        dispatch({
+          type: LIST_ADD_FAIL,
+          payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
+        });
+      }
+    } else {
+      const state = JSON.parse(window.localStorage.getItem("state"));
+      const newState = state
+        ? { ...state, lists: [...state.lists, list] }
+        : { lists: [list] };
+      window.localStorage.setItem("state", JSON.stringify(newState));
+      // console.log("local storage set");
+      // console.log(window.localStorage.getItem("state"));
+      dispatch({ type: LIST_ADD, payload: list });
+    }
+  };
 export const getList = (id) => async (dispatch) => {
   try {
     dispatch({
