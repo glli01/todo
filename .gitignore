@@ -10,7 +10,8 @@ node_modules/
 /coverage
 
 # production
-
+server.crt
+server.key
 # misc
 .env
 /.env
