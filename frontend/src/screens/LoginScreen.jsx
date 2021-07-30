@@ -25,6 +25,7 @@ const LoginScreen = () => {
     }
   };
   useEffect(() => {
+    document.title = "Todooos | Login";
     if (success) {
       history.push("/");
       dispatch(getAllTasks());
