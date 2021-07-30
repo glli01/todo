@@ -3,7 +3,7 @@ import checkmarkFilled from "../assets/img/checkmark-filled.svg";
 import checkmarkUnfilled from "../assets/img/checkmark-unfilled.svg";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
-  TASK_TOGGLE_COMPLETED,
+  // TASK_TOGGLE_COMPLETED,
   TASK_DELETE,
 } from "../features/tasks/constants/tasksConstants";
 import Icon from "./Icon";

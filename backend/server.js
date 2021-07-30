@@ -13,6 +13,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { errorHandler } from "./middleware/error.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 dotenv.config();
 
 connectDB(); //connects to mongoDB
@@ -22,6 +23,8 @@ const PORT = 5000;
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("build"));
+// app.use(cors())
 
 const getCookieToken = (req) => {
   return req.cookies.token ? req.cookies.token : null;
