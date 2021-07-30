@@ -9,10 +9,10 @@
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server.js",
+    "start": "node backend/server.js",
     "build:ui": "rm -rf build && cd frontend && npm run build --prod && cp -r build ..",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",    
     "logs:prod": "heroku logs --tail"
   },
   "repository": {
