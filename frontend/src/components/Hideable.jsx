@@ -9,6 +9,8 @@ const Hideable = ({
   desiredClass = "sidebar__category-title",
   assetShow,
   assetNoShow,
+  frontIconShow,
+  frontIconNoShow,
 }) => {
   const [active, setActive] = useState(false);
   useEffect(() => {
@@ -24,8 +26,28 @@ const Hideable = ({
     <>
       <div className={active ? "hideable active" : "hideable"}>
         <div className={desiredClass} onClick={toggleActive}>
-          {" "}
-          {title}
+          <span className="wrapper--fs">
+            {frontIconShow || frontIconNoShow ? (
+              <Icon>
+                {active ? (
+                  <img
+                    className="hideable__icon--front"
+                    src={frontIconShow}
+                    alt="front"
+                  />
+                ) : (
+                  <img
+                    className="hideable__icon--front"
+                    src={frontIconNoShow}
+                    alt="front"
+                  ></img>
+                )}
+              </Icon>
+            ) : (
+              ""
+            )}{" "}
+            {title}
+          </span>
           {assetShow || assetNoShow ? (
             <Icon>
               {active ? (

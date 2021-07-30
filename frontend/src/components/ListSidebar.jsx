@@ -9,7 +9,18 @@ import arrowDown from "../assets/img/arrow-down.svg";
 import arrowLeft from "../assets/img/arrow-left.svg";
 import SidebarUser from "./SidebarUser";
 import AddList from "./AddList";
+import bird from "../assets/img/bird.svg";
+import Icon from "./Icon";
 import { useHistory } from "react-router";
+import today from "../assets/img/today.svg";
+import tomorrow from "../assets/img/tomorrow.svg";
+import list from "../assets/img/list.svg";
+import timer from "../assets/img/timer.svg";
+import todayPurple from "../assets/img/today--purple.svg";
+import tomorrowPurple from "../assets/img/tomorrow--purple.svg";
+import listPurple from "../assets/img/list--purple.svg";
+import timerPurple from "../assets/img/timer--purple.svg";
+
 const ListSidebar = () => {
   const history = useHistory();
   const { lists } = useSelector((state) => state.lists);
@@ -23,23 +34,24 @@ const ListSidebar = () => {
             history.push("/");
           }}
         >
-          TodoList
+          <img className="logo__icon" src={bird}></img>
+          todooos
         </div>
-        <Hideable activeProp={false} title={"Today"}>
-          <div className="sidebar__category">
-            {lists
-              ? lists
-                  .filter((list) => list._id % 2 === 1)
-                  .map((list) => (
-                    <List key={list._id} list={list}>
-                      {" "}
-                    </List>
-                  ))
-              : ""}
-          </div>
-        </Hideable>
-        <Hideable activeProp={false} title={"Tomorrow"}></Hideable>
         <Hideable
+          frontIconShow={todayPurple}
+          frontIconNoShow={today}
+          activeProp={false}
+          title={"Today"}
+        ></Hideable>
+        <Hideable
+          frontIconShow={tomorrowPurple}
+          frontIconNoShow={tomorrow}
+          activeProp={false}
+          title={"Tomorrow"}
+        ></Hideable>
+        <Hideable
+          frontIconNoShow={timer}
+          frontIconShow={timerPurple}
           activeProp={false}
           title={"Timer"}
           assetShow={arrowDown}
@@ -48,6 +60,8 @@ const ListSidebar = () => {
           <Timer></Timer>
         </Hideable>
         <Hideable
+          frontIconNoShow={list}
+          frontIconShow={listPurple}
           activeProp={true}
           title={"Lists"}
           assetShow={arrowDown}

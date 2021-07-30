@@ -140,7 +140,14 @@ button:hover {
   font-size: 2rem;
   color: rgba(255, 115, 0, 0.9);
   font-weight: 600;
+  width: 100%;
   cursor: pointer;
+}
+
+.logo__icon {
+  width: 2rem;
+  height: 2rem;
+  padding-right: 0.6rem;
 }
 
 .icon {
@@ -227,6 +234,11 @@ button:hover {
 .hideable-content {
   display: none;
 }
+.hideable__icon--front {
+  width: 1rem;
+  object-fit: cover;
+  padding-right: 0.5rem;
+}
 .active {
   display: block !important;
 }
@@ -281,7 +293,7 @@ input[type="number"] {
 .sidebar__category__item-label {
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 100rem;
+  border-radius: 0.175rem;
   margin-right: 0.8rem;
   background-color: blueviolet;
   display: inline-block;
@@ -366,6 +378,13 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   height: inherit;
+}
+.wrapper--fs {
+  display: flex;
+  color: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  justify-content: flex-start;
 }
 .wrapper--w100 {
   display: flex;
