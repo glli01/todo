@@ -142,11 +142,6 @@ app.get("/api/tasks/:id", async (req, res, next) => {
     next(error);
   }
 });
-
-app.get("/*", (req, res) => {
-  res.sendFile("index.html");
-});
-
 // //returns user object with hash value.
 // app.get("/login/", async (req, res) => {
 //   if (req.query.email) {
