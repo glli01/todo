@@ -428,7 +428,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-BoldOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-BoldOblique.woff") format("woff");
   font-weight: bold;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -446,7 +446,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-DemiBoldOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-DemiBoldOblique.woff") format("woff");
   font-weight: 600;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -473,7 +473,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-ExtraBoldOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-ExtraBoldOblique.woff") format("woff");
   font-weight: bold;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -482,7 +482,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-ExtraLightOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-ExtraLightOblique.woff") format("woff");
   font-weight: 200;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -500,7 +500,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-HeavyOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-HeavyOblique.woff") format("woff");
   font-weight: 900;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -518,7 +518,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-LightOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-LightOblique.woff") format("woff");
   font-weight: 300;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -536,7 +536,7 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-MediumOblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-MediumOblique.woff") format("woff");
   font-weight: 500;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -554,6 +554,6 @@ input[type="number"] {
   src: url("assets/fonts/VisbyRoundCF-Oblique.woff2") format("woff2"),
     url("assets/fonts/VisbyRoundCF-Oblique.woff") format("woff");
   font-weight: normal;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
