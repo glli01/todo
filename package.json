@@ -12,7 +12,7 @@
     "start": "node server.js",
     "build:ui": "rm -rf build && cd frontend && npm run build --prod && cp -r build ..",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m dev && git push && npm run deploy",    
+    "deploy:full": "npm run build:ui && npm run deploy",    
     "logs:prod": "heroku logs --tail"
   },
   "repository": {
