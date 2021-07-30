@@ -142,6 +142,10 @@ app.get("/api/tasks/:id", async (req, res, next) => {
   }
 });
 
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 // //returns user object with hash value.
 // app.get("/login/", async (req, res) => {
 //   if (req.query.email) {
