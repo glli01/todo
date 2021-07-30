@@ -142,21 +142,6 @@ app.get("/api/tasks/:id", async (req, res, next) => {
     next(error);
   }
 });
-// //returns user object with hash value.
-// app.get("/login/", async (req, res) => {
-//   if (req.query.email) {
-//     try {
-//       console.log(`GET request to /login/${req.query.email}`);
-//       const response = await User.findOne({ email: req.query.email });
-//       res.json(response);
-//     } catch (error) {
-//       console.error(`Error: ${error.message}`);
-//       res.send(`Error: ${error.message}`);
-//     }
-//   } else {
-//     console.error("Please enter your email.");
-//   }
-// });
 
 app.post("/login/", async (req, res, next) => {
   try {
@@ -220,6 +205,10 @@ app.post("/api/tasks", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+app.get("/*", async (req, res) => {
+  res.redirect("/");
 });
 
 app.use(errorHandler);
