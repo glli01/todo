@@ -10,6 +10,9 @@ node_modules/
 /coverage
 
 # production
+build/
+/build
+build
 
 # misc
 .env
