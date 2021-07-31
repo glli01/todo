@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.a8cb98a0.chunk.css",
-    "main.js": "/static/js/main.e215b961.chunk.js",
-    "main.js.map": "/static/js/main.e215b961.chunk.js.map",
+    "main.css": "/static/css/main.166a0665.chunk.css",
+    "main.js": "/static/js/main.234414d6.chunk.js",
+    "main.js.map": "/static/js/main.234414d6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9b7b5b20.js",
     "runtime-main.js.map": "/static/js/runtime-main.9b7b5b20.js.map",
-    "static/js/2.683d5707.chunk.js": "/static/js/2.683d5707.chunk.js",
-    "static/js/2.683d5707.chunk.js.map": "/static/js/2.683d5707.chunk.js.map",
+    "static/js/2.f7f29faf.chunk.js": "/static/js/2.f7f29faf.chunk.js",
+    "static/js/2.f7f29faf.chunk.js.map": "/static/js/2.f7f29faf.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.a8cb98a0.chunk.css.map": "/static/css/main.a8cb98a0.chunk.css.map",
-    "static/js/2.683d5707.chunk.js.LICENSE.txt": "/static/js/2.683d5707.chunk.js.LICENSE.txt",
+    "static/css/main.166a0665.chunk.css.map": "/static/css/main.166a0665.chunk.css.map",
+    "static/js/2.f7f29faf.chunk.js.LICENSE.txt": "/static/js/2.f7f29faf.chunk.js.LICENSE.txt",
     "static/media/App.css": "/static/media/VisbyRoundCF-Regular.2930bff3.woff",
     "static/media/arrow-down.30ca5108.svg": "/static/media/arrow-down.30ca5108.svg",
     "static/media/arrow-left.08aac97b.svg": "/static/media/arrow-left.08aac97b.svg",
@@ -18,7 +18,7 @@
     "static/media/checkmark-unfilled.f335fbb9.svg": "/static/media/checkmark-unfilled.f335fbb9.svg",
     "static/media/list--purple.e6bfd571.svg": "/static/media/list--purple.e6bfd571.svg",
     "static/media/list.4a8eccb8.svg": "/static/media/list.4a8eccb8.svg",
-    "static/media/spinner.3b438add.svg": "/static/media/spinner.3b438add.svg",
+    "static/media/spinner.84973c0d.svg": "/static/media/spinner.84973c0d.svg",
     "static/media/timer--purple.385f219e.svg": "/static/media/timer--purple.385f219e.svg",
     "static/media/timer.67b434f5.svg": "/static/media/timer.67b434f5.svg",
     "static/media/today--purple.7155be65.svg": "/static/media/today--purple.7155be65.svg",
@@ -30,8 +30,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9b7b5b20.js",
-    "static/js/2.683d5707.chunk.js",
-    "static/css/main.a8cb98a0.chunk.css",
-    "static/js/main.e215b961.chunk.js"
+    "static/js/2.f7f29faf.chunk.js",
+    "static/css/main.166a0665.chunk.css",
+    "static/js/main.234414d6.chunk.js"
   ]
 }
