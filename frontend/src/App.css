@@ -315,6 +315,29 @@ button:hover {
 .active {
   display: block !important;
 }
+.color-picker {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  margin-top: 1.5rem;
+  height: 100vh;
+}
+.color-picker__wrapper {
+  position: absolute;
+  z-index: +50;
+  height: fit-content;
+  width: fit-content;
+}
+
+.screen-cover {
+  display: none;
+  top: 0;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

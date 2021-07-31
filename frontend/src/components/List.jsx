@@ -28,9 +28,10 @@ const List = ({ list }) => {
             <span
               className={
                 list.color
-                  ? "sidebar__category__item-label " + list.color
+                  ? "sidebar__category__item-label "
                   : "sidebar__category__item-label"
               }
+              style={{ "background-color": list.color }}
             ></span>
           </span>
           {list.title}
