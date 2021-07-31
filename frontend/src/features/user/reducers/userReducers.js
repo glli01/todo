@@ -2,6 +2,9 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_SIGNUP_REQUEST,
+  USER_SIGNUP_SUCCESS,
+  USER_SIGNUP_FAIL,
   USER_LOGOUT_SUCCESS,
   USER_SET_GUEST,
 } from "../constants/userConstants";
@@ -42,6 +45,28 @@ export const userReducer = (state = { user: {} }, action) => {
     }
     case USER_SET_GUEST: {
       return { user: { _id: "guest" }, guest: true };
+    }
+    case USER_SIGNUP_REQUEST: {
+      return { ...state, loading: true, user: {}, success: null };
+    }
+    case USER_SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+        message: action.message,
+        success: action.success,
+        guest: false,
+      };
+    }
+    case USER_SIGNUP_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        message: action.message,
+        success: action.success,
+      };
     }
     default:
       return state;

@@ -342,30 +342,69 @@ input[type="number"] {
 }
 .login__wrapper {
   position: absolute;
-  background-color: white;
+  background-color: hsla(220, 23%, 97%, 1);
   height: 100%;
   width: 100%;
   z-index: +50;
   display: flex;
 }
 .login__form__input {
-  border: 1px solid black;
   border-radius: 5px;
-  max-width: 80%;
-  margin: auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.5rem auto;
+}
+.login__form__title {
+  text-align: center;
+  color: #ff8c28;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
 }
 .login__form__input > input {
   width: 100%;
+  font-family: sans-serif;
+  background-color: rgb(253, 253, 253);
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin: 0.3rem 0;
 }
+.signup__form__input {
+  border-radius: 5px;
+  width: 40%;
+  max-width: 100%;
+}
+.signup__form__input > input {
+  width: 100%;
+  font-family: sans-serif;
+  background-color: rgb(253, 253, 253);
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.signup__form__input.first-name {
+  width: 55%;
+}
+.signup__form__input.last-name {
+  width: 35%;
+}
+
 .login__form {
   width: 15%;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 3rem;
   margin: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
 }
 .login__button--submit {
   width: 100%;
+  background-color: orange;
 }
 .wrapper {
   display: flex;
@@ -378,6 +417,54 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   height: inherit;
+}
+.wrapper--between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.wrapper--around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+.wrapper--even {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.button--primary {
+  background-color: rgba(255, 115, 0, 0.9);
+  font-size: 1rem;
+  color: white;
+  padding: 1rem;
+  width: 40%;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.button--primary:hover {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.button--secondary {
+  background-color: orange;
+  font-size: 1rem;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 30%;
+  font-weight: 600;
+  text-align: center;
+}
+.button--secondary:hover {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.login__button__wrapper {
+  width: 100%;
+  margin-top: 1rem;
 }
 .wrapper--fs {
   display: flex;

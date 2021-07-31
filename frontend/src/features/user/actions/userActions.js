@@ -3,6 +3,9 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT_SUCCESS,
+  USER_SIGNUP_FAIL,
+  USER_SIGNUP_REQUEST,
+  USER_SIGNUP_SUCCESS,
 } from "../constants/userConstants";
 import { TASK_LOGOUT } from "../../tasks/constants/tasksConstants";
 import { LIST_LOGOUT } from "../../lists/constants/listsConstants";
@@ -52,6 +55,36 @@ export const logoutUser = () => async (dispatch) => {
     console.log(`Error: ${error.message}`);
   }
 };
+
+export const createUser =
+  (email, firstName, lastName, password) => async (dispatch) => {
+    try {
+      dispatch({ type: USER_SIGNUP_REQUEST });
+      const name = firstName + " " + lastName;
+      const body = { email, name, password };
+      const { data } = await axios.post("/signup", body);
+      if (data && data.token) {
+        dispatch({
+          type: USER_SIGNUP_SUCCESS,
+          payload: data,
+          message: "Success",
+          success: true,
+        });
+      }
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+      dispatch({
+        type: USER_SIGNUP_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+        message: "Signup Failed",
+        success: false,
+      });
+    }
+  };
+
 export const getUser = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });

@@ -7,6 +7,8 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
+      socketTimeoutMS: 10000,
+      connectTimeoutMS: 10000,
     });
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {

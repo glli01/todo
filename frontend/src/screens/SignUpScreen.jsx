@@ -3,7 +3,7 @@ import React from "react";
 import { USER_SET_GUEST } from "../features/user/constants/userConstants";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../features/user/actions/userActions";
+import { createUser } from "../features/user/actions/userActions";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Spinner from "../components/Spinner";
@@ -15,17 +15,19 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const { loading, message, success, error, user, guest } = useSelector(
     (state) => state.user
   );
   const handleKeyDown = (e) => {
     if (e.which === 13) {
       console.log("got enter key");
-      dispatch(getUser(email, password));
+      dispatch(createUser(email, firstName, lastName, password));
     }
   };
   useEffect(() => {
-    document.title = "Todooos | Login";
+    document.title = "Todooos | Sign Up";
     if (success) {
       history.push("/");
       dispatch(getAllTasks());
@@ -41,7 +43,33 @@ const LoginScreen = () => {
             <Spinner></Spinner>
           ) : (
             <div className="login__form">
-              <div className="login__form__title">Sign in</div>
+              <div className="login__form__title">Sign up for free</div>
+              <div className="wrapper--between">
+                <div className="signup__form__input first-name">
+                  First Name
+                  <input
+                    type="text"
+                    value={firstName}
+                    placeholder=""
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+                <div className="signup__form__input last-name">
+                  Last Name
+                  <input
+                    type="text"
+                    value={lastName}
+                    placeholder=""
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+              </div>
               <div className="login__form__input">
                 Email
                 <input
@@ -57,7 +85,7 @@ const LoginScreen = () => {
               <div className="login__form__input">
                 Password
                 <input
-                  type="password"
+                  type="Password"
                   value={password}
                   placeholder=""
                   onChange={(e) => {
@@ -70,21 +98,15 @@ const LoginScreen = () => {
               <div className="wrapper--between login__button__wrapper">
                 <Link
                   onClick={() => {
-                    dispatch(getUser(email, password));
+                    dispatch(createUser(email, firstName, lastName, password));
                   }}
                   className="button--primary"
-                  to={`/login/?email=${email}`}
-                >
-                  Log in
-                </Link>
-                <Link
-                  to={`/signup/`}
-                  // onClick={() => {
-                  //   dispatch(getUser(email, password));
-                  // }}
-                  className="button--secondary"
+                  to={`/signup/?email=${email}`}
                 >
                   Sign up
+                </Link>
+                <Link to={`/login/`} className="button--secondary">
+                  Cancel
                 </Link>
               </div>
               <div

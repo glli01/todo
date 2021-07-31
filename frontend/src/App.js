@@ -9,6 +9,7 @@ import Spinner from "./components/Spinner";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithToken } from "./features/user/actions/userActions.js";
+import SignUpScreen from "./screens/SignUpScreen";
 import { getLists } from "./features/lists/actions/listsActions";
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
     <>
       <Router>
         <Route path="/login" component={LoginScreen} />
+        <Route path="/signup" component={SignUpScreen} />
         <div className="main">
           {loading ? (
             <Spinner></Spinner>

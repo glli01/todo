@@ -172,6 +172,49 @@ app.post("/login/", async (req, res, next) => {
   }
 });
 
+app.post("/signup", async (req, res, next) => {
+  console.log(`POST request to /signup`);
+  try {
+    const user = await User.create({
+      email: req.body.email,
+      name: req.body.name,
+    });
+    if (user) {
+      try {
+        const passwordHash = await bcrypt.hash(req.body.password, 10);
+        const password = await Password.create({
+          user: user._id,
+          password: passwordHash,
+        });
+        if (password) {
+          const userForToken = {
+            email: user.email,
+            id: user._id,
+          };
+
+          const token = jwt.sign(userForToken, process.env.SECRET, {
+            expiresIn: "24h",
+          });
+          res.cookie("token", token, { httpOnly: true });
+          res.json({ ...user._doc, token });
+        } else {
+          throw new Error(" Password not created");
+        }
+      } catch (error) {
+        const user = await User.deleteOne({ email: req.body.email });
+        throw new Error(error);
+      }
+    } else {
+      throw new Error("User Not Created");
+    }
+  } catch (error) {
+    if (error.name === "MongoError") {
+      next(new Error("error: email must be unique"));
+    }
+    next(error);
+  }
+});
+
 app.delete("/logout", (req, res, next) => {
   try {
     console.log(`DELETE request to /logout`);
@@ -185,11 +228,18 @@ app.delete("/logout", (req, res, next) => {
 app.get("/login/verify", async (req, res, next) => {
   console.log(`GET request to /login/verify`);
   try {
+    req.socket.setTimeout(10000);
     const token = getCookieToken(req);
     const decodedToken = jwt.verify(token, process.env.SECRET);
     const user = await User.findOne({ _id: decodedToken.id });
-    res.json(user);
+    console.log(user);
+    if (user) {
+      res.json(user);
+    } else {
+      throw new Error("User not Found");
+    }
   } catch (error) {
+    res.cookie("token", "nullified", { httpOnly: true });
     next(error);
   }
 });
