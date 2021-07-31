@@ -209,7 +209,7 @@ app.post("/signup", async (req, res, next) => {
     }
   } catch (error) {
     if (error.name === "MongoError") {
-      next(new Error("error: email must be unique"));
+      next(new Error("error: email already taken"));
     }
     next(error);
   }
