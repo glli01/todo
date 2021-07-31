@@ -1,10 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import alarmSound from "../assets/sounds/alarm.mp3";
 const Timer = () => {
   const [minutes, setMinutes] = useState("25");
   const [seconds, setSeconds] = useState("00");
   const [timerID, setTimerID] = useState(null);
   const [started, setStarted] = useState(false);
+  const audio = useRef();
   const minuteChange = (e) => {
     e.target.value =
       e.target.value[0] === "0" ? e.target.value.substr(1) : e.target.value;
@@ -35,8 +37,9 @@ const Timer = () => {
     setStarted(true);
     let timerIDx = setInterval(() => {
       if (secondz === "00" && minutez === "00") {
-        console.log("done");
+        // alert("Timer done");
         clearInterval(timerIDx);
+        audio && audio.current && audio.current.play();
         setMinutes("00");
         setSeconds("00");
         return;
@@ -57,11 +60,14 @@ const Timer = () => {
   };
 
   const stopTimer = () => {
+    audio && audio.current && audio.current.pause();
+    if (audio && audio.current) audio.current.currentTime = 0;
     setStarted(false);
     clearInterval(timerID);
   };
   return (
     <div className="timer">
+      <audio ref={audio} src={alarmSound}></audio>
       <div className="timer__clock">
         <div className="wrapper--none">
           <input

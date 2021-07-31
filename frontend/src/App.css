@@ -380,6 +380,9 @@ input[type="number"] {
 .task__title {
   margin-left: 1rem;
 }
+.task__input {
+  width: 100%;
+}
 .tasks__completed-title {
   color: rgb(150, 150, 150);
 }
