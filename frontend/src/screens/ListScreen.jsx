@@ -69,7 +69,7 @@ const ListScreen = ({ match }) => {
       e.key === "Enter" &&
       document.activeElement !== inputEl.current
     ) {
-      inputEl.current.focus();
+      inputEl && inputEl.current && inputEl.current.focus();
     } else if (e.key === "Escape" || e.key === "F12") {
       // console.log("in Escape sequence");
       document.activeElement.blur();

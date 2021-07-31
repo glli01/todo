@@ -7,11 +7,13 @@ import {
 } from "./features/lists/reducers/listsReducer.js";
 import { tasksReducer } from "./features/tasks/reducers/tasksReducer.js";
 import { userReducer } from "./features/user/reducers/userReducers.js";
+import { confirmReducer } from "./features/confirm/reducers/confirmReducers.js";
 const reducer = combineReducers({
   lists: listsReducer,
   list: listDetailsReducer,
   tasks: tasksReducer,
   user: userReducer,
+  confirm: confirmReducer,
 });
 
 const middleware = [thunk];
