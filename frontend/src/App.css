@@ -22,6 +22,9 @@ button {
 button:hover {
   color: red;
 }
+.showable {
+  display: none;
+}
 /* Implementing theme from dribbble by mikSkuza (KosmoTime) */
 .main {
   height: 100vh;
@@ -49,6 +52,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-left: 0.3rem;
 }
 
 .sidebar__category-title {
@@ -60,8 +64,8 @@ button:hover {
   width: 100%;
   font-family: "Visby Round CF", "Open Sans";
   font-size: 1.2rem;
-  padding: 0.3rem;
   margin: 0.05rem;
+  padding: 0.3rem;
   font-weight: 500;
 }
 .sidebar__category__item {
@@ -69,6 +73,7 @@ button:hover {
   padding: 0.3rem;
   margin: 0.1rem;
   margin-left: 2rem;
+  width: inherit;
   display: flex;
 }
 .sidebar__category__item--active {
@@ -101,12 +106,76 @@ button:hover {
   font-weight: 600;
 }
 
+.confirm__wrapper {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: +12;
+  background: rgba(0, 0, 0, 0.075);
+}
+
+.confirm__form__prompt {
+  font-size: 1.2rem;
+}
+
+.confirm__form {
+  background-color: white;
+  text-align: center;
+  width: 10vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.05);
+  margin: auto;
+}
+
+.confirm__button--yes {
+  background-color: rgba(255, 115, 0, 0.9);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  width: 40%;
+  cursor: pointer;
+}
+.confirm__button--no {
+  background-color: rgb(255, 234, 167);
+  padding: 0.5rem;
+  color: grey;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  width: 40%;
+  cursor: pointer;
+}
+.confirm__button--yes:hover {
+  box-shadow: inset 4px 4px 4px 0 rgba(0, 0, 0, 0.05);
+}
+.confirm__button--no:hover {
+  box-shadow: inset 4px 4px 4px 0 rgba(0, 0, 0, 0.05);
+}
 .list__title-2 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
-
+.list__delete {
+  position: absolute;
+  right: 0;
+  z-index: +30;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  top: 0;
+}
 .home__title {
   color: hsla(254, 68%, 55%, 1);
   font-size: 1.5rem;
@@ -231,6 +300,10 @@ button:hover {
   text-align: center;
 }
 
+.hideable {
+  width: 100%;
+  height: fit-content;
+}
 .hideable-content {
   display: none;
 }
@@ -241,6 +314,29 @@ button:hover {
 }
 .active {
   display: block !important;
+}
+.color-picker {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  margin-top: 1.5rem;
+  height: 100vh;
+}
+.color-picker__wrapper {
+  position: absolute;
+  z-index: +50;
+  height: fit-content;
+  width: fit-content;
+}
+
+.screen-cover {
+  display: none;
+  top: 0;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -499,6 +595,9 @@ input[type="number"] {
 .list__screen {
   width: 100%;
   height: 80%;
+}
+.list__wrapper {
+  position: relative;
 }
 /* div:focus {
   border: 1px solid black;

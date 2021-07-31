@@ -31,7 +31,7 @@ const LoginScreen = () => {
       dispatch(getAllTasks());
       dispatch(getLists(guest));
     }
-  }, [success]);
+  }, [success, dispatch, guest, history]);
   return (
     <>
       {success && user._id && <Redirect to="/"></Redirect>}

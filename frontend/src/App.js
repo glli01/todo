@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserWithToken } from "./features/user/actions/userActions.js";
 import SignUpScreen from "./screens/SignUpScreen";
 import { getLists } from "./features/lists/actions/listsActions";
+import ConfirmOverlay from "./screens/ConfirmOverlay";
 function App() {
   const dispatch = useDispatch();
   const { guest, loading } = useSelector((state) => state.user);
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignUpScreen} />
+        <ConfirmOverlay></ConfirmOverlay>
         <div className="main">
           {loading ? (
             <Spinner></Spinner>
