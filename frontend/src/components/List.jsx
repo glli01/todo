@@ -26,6 +26,14 @@ const List = ({ list }) => {
           {list.title}
         </div>
       </Link>
+      <div
+        className="list__delete"
+        onClick={() => {
+          console.log("clicked!");
+        }}
+      >
+        hi
+      </div>
     </div>
   );
 };

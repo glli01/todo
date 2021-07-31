@@ -111,6 +111,20 @@ app.delete("/api/tasks/:id", async (req, res) => {
     next(error);
   }
 });
+app.delete("/api/lists/:id", async (req, res) => {
+  try {
+    console.log(`DELETE request to /api/lists/${req.params.id}`);
+    const token = getCookieToken(req);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const response = await List.deleteOne({
+      user: decodedToken.id,
+      _id: req.params.id,
+    });
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.get("/api/lists/:id", async (req, res, next) => {
   try {

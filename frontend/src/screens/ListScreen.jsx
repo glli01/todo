@@ -8,7 +8,10 @@ import Spinner from "../components/Spinner";
 import { useHistory } from "react-router-dom";
 import { LIST_SET_ACTIVE } from "../features/lists/constants/listsConstants";
 import { TASK_DELETE } from "../features/tasks/constants/tasksConstants";
-import { toggleTaskCompleted } from "../features/tasks/actions/tasksActions";
+import {
+  deleteTask,
+  toggleTaskCompleted,
+} from "../features/tasks/actions/tasksActions";
 
 const ListScreen = ({ match }) => {
   const listEl = useRef();
@@ -52,7 +55,7 @@ const ListScreen = ({ match }) => {
       );
       const taskToDelete = filteredTasks ? filteredTasks[0] : null;
       if (taskToDelete) {
-        dispatch({ type: TASK_DELETE, id: taskToDelete._id });
+        dispatch(deleteTask(taskToDelete, guest));
       }
     } else if (e.key === "c" && document.activeElement !== inputEl.current) {
       const filteredTasks = tasks.filter(
