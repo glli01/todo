@@ -279,6 +279,14 @@ button:hover {
   width: 100%;
 }
 
+.start,
+.stop {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.start:hover {
+  color: rgba(24, 158, 64, 0.9);
+}
 .timer {
   font-size: 2rem;
   width: 100%;

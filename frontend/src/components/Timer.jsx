@@ -80,20 +80,23 @@ const Timer = () => {
         </div>
       </div>
       <div className="flex">
-        <button
-          disabled={started ? true : false}
-          className="start"
-          onClick={startTimer}
-        >
-          start
-        </button>
-        <button
-          disabled={started ? false : true}
-          className="stop"
-          onClick={stopTimer}
-        >
-          stop
-        </button>
+        {!started ? (
+          <button
+            disabled={started ? true : false}
+            className="start"
+            onClick={startTimer}
+          >
+            start
+          </button>
+        ) : (
+          <button
+            disabled={started ? false : true}
+            className="stop"
+            onClick={stopTimer}
+          >
+            stop
+          </button>
+        )}
       </div>
     </div>
   );
