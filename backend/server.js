@@ -240,7 +240,7 @@ app.get("/login/verify", async (req, res, next) => {
     }
   } catch (error) {
     res.cookie("token", "nullified", { httpOnly: true });
-    next(error);
+    next(new Error("User Not Found"));
   }
 });
 
