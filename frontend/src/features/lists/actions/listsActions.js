@@ -132,6 +132,6 @@ export const deleteList =
           }
         : { lists: [list] };
       window.localStorage.setItem("state", JSON.stringify(newState));
-      dispatch({ type: LIST_DELETE_SUCCESS, payload: list });
+      dispatch({ type: LIST_DELETE_SUCCESS, payload: list, id: list._id });
     }
   };
