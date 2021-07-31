@@ -9,6 +9,10 @@ import {
   LIST_LOGOUT,
   LIST_ADD_SUCCESS,
   // LIST_ADD_LOCAL,
+  LIST_DELETE,
+  LIST_DELETE_FAIL,
+  LIST_DELETE_REQUEST,
+  LIST_DELETE_SUCCESS,
   LIST_SET_ACTIVE,
   LIST_ADD_REQUEST,
   LIST_ADD_FAIL,
@@ -55,6 +59,23 @@ export const listsReducer = (state = { lists: [] }, action) => {
     }
     case LIST_SET_ACTIVE:
       return { ...state, active: action.payload };
+    case LIST_DELETE: {
+      const newlists = state.lists.filter((list) => list._id !== action.id);
+      return { ...state, lists: newlists };
+    }
+    case LIST_DELETE_REQUEST: {
+      return { ...state, loading: true };
+    }
+    case LIST_DELETE_FAIL: {
+      const newlists = state.lists
+        ? [action.original, ...state.lists]
+        : [action.original];
+      return { ...state, loading: false, error: action.error, lists: newlists };
+    }
+    case LIST_DELETE_SUCCESS: {
+      const newlists = state.lists.filter((list) => list._id !== action.id);
+      return { ...state, loading: false, lists: newlists };
+    }
     default:
       return state;
   }

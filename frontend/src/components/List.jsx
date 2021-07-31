@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteList } from "../features/lists/actions/listsActions";
 const List = ({ list }) => {
   const { active } = useSelector((state) => state.lists);
+  const guest = useSelector((state) => state.user.guest);
+  const dispatch = useDispatch();
   return (
     <div>
       <Link to={`/lists/${list._id}`}>
@@ -29,7 +32,7 @@ const List = ({ list }) => {
       <div
         className="list__delete"
         onClick={() => {
-          console.log("clicked!");
+          dispatch(deleteList(list, guest));
         }}
       >
         hi
