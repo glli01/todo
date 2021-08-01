@@ -11,8 +11,14 @@ const UserAvailable = ({ user, profilePic }) => {
     <>
       <div
         className="user--available"
-        onMouseOver={() => setHovering(true)}
-        onMouseOut={() => setHovering(false)}
+        onMouseOver={() => {
+          setHovering(true);
+        }}
+        onMouseOut={(e) => {
+          console.log(e.target.parentNode);
+          console.log(e);
+          if (e.target.className !== "wrapper--w100") setHovering(false);
+        }}
       >
         {hovering ? (
           <div className="wrapper--w100">
@@ -30,13 +36,15 @@ const UserAvailable = ({ user, profilePic }) => {
           </div>
         ) : (
           <>
-            <div className="user__wrapper--profile-pic">
-              <Icon>
-                <img className="user__profile-pic" src={profilePic}></img>
-              </Icon>
-            </div>
-            <div className="wrapper user--available__text">
-              {user.firstName || user.name}
+            <div className="wrapper--fs">
+              <div className="user__wrapper--profile-pic">
+                <Icon>
+                  <img className="user__profile-pic" src={profilePic}></img>
+                </Icon>
+              </div>
+              <div className="wrapper user--available__text">
+                {user.firstName || user.name}
+              </div>
             </div>
           </>
         )}
