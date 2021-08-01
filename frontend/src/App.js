@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithToken } from "./features/user/actions/userActions.js";
 import SignUpScreen from "./screens/SignUpScreen";
-import { getLists } from "./features/lists/actions/listsActions";
+import TodayScreen from "./screens/TodayScreen";
 import ConfirmOverlay from "./screens/ConfirmOverlay";
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ function App() {
             <>
               <ListSidebar></ListSidebar>
               <div className="content">
+                <Route path="/today" component={TodayScreen} />
                 <Route path="/" component={HomeScreen} exact />
                 <Route path="/lists/:id" component={ListScreen} />
                 <Route path="/logout" component={Logout} exact />
