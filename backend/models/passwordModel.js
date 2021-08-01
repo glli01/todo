@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const passwordSchema = mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectID,
     required: true,
     ref: "User",
   },

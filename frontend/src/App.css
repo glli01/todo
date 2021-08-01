@@ -76,6 +76,9 @@ button:hover {
   width: inherit;
   display: flex;
 }
+.wrapper--hi .sidebar__category__item-label {
+  cursor: pointer;
+}
 .sidebar__category__item--active {
   border-radius: 0.5rem;
   padding: 0.3rem;
@@ -584,7 +587,6 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   width: 100%;
 }
 .wrapper--horizontal {

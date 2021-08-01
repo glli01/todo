@@ -39,6 +39,7 @@
     "mongoose": "^5.13.2",
     "nodemon": "^2.0.12",
     "path": "^0.12.7",
+    "react-datepicker": "^4.1.1",
     "react-router-dom": "^5.2.0"
   }
 }
