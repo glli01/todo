@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Task from "../components/Task";
+import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 const TodayScreen = () => {
+  const history = useHistory();
   const [dueToday, setDueToday] = useState([]);
   const { tasks } = useSelector((state) => state.tasks);
+  useEffect(() => {
+    document.title = "Today | Todooos";
+  }, [history]);
   useEffect(() => {
     const newDueToday = tasks.filter((task) => {
       const today = new Date();

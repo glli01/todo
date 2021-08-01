@@ -31,7 +31,7 @@ const ListScreen = ({ match }) => {
       ? lists.find((list) => list._id === match.params.id)
       : null;
     setList(list);
-    if (list) document.title = `Todooos | ${list.title}`;
+    if (list) document.title = `${list.title} | Todooos`;
     setListIndex(
       lists ? lists.findIndex((list) => list._id === match.params.id) : 0
     );

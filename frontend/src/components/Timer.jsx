@@ -51,9 +51,9 @@ const Timer = () => {
         secondz--;
         secondz = secondz <= 9 ? "0" + secondz : secondz;
       }
-
       setMinutes(minutez);
       setSeconds(secondz);
+      document.title = minutez + ":" + secondz + " | Todooos";
       console.log("set minutes");
     }, 1000);
     setTimerID(timerIDx);

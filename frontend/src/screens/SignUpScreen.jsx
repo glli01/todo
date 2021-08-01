@@ -27,7 +27,7 @@ const LoginScreen = () => {
     }
   };
   useEffect(() => {
-    document.title = "Todooos | Sign Up";
+    document.title = "Sign Up | Todooos";
     if (success) {
       history.push("/");
       dispatch(getAllTasks());
