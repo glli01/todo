@@ -7,7 +7,6 @@ import AddTask from "../components/AddTask";
 import Spinner from "../components/Spinner";
 import { useHistory } from "react-router-dom";
 import { LIST_SET_ACTIVE } from "../features/lists/constants/listsConstants";
-import { TASK_DELETE } from "../features/tasks/constants/tasksConstants";
 import {
   deleteTask,
   toggleTaskCompleted,

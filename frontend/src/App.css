@@ -41,6 +41,7 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   width: 10vw;
+  min-width: 150px;
   padding: 0 4rem;
   height: 100vh;
   background-color: white;
@@ -88,8 +89,8 @@ button:hover {
   font-weight: 600;
 }
 .content {
-  margin: 0 auto;
-  width: 70vw;
+  margin: 0 10%;
+  width: fill;
 }
 .sidebar__category__item:hover {
   background-color: hsla(220, 23%, 97%, 1);
@@ -128,6 +129,7 @@ button:hover {
   background-color: white;
   text-align: center;
   width: 10vw;
+  min-width: 150px;
   height: 10vh;
   display: flex;
   flex-direction: column;
@@ -170,7 +172,7 @@ button:hover {
 .list__delete {
   position: absolute;
   right: 0;
-  z-index: +30;
+  z-index: +1;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -503,6 +505,7 @@ input[type="number"] {
 
 .login__form {
   width: 15%;
+  min-width: 250px;
   background-color: white;
   border-radius: 1rem;
   padding: 3rem;

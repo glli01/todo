@@ -1,8 +1,6 @@
 import React from "react";
-import axios from "axios";
 import List from "./List";
-// import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Hideable from "./Hideable";
 import Timer from "./Timer";
 import arrowDown from "../assets/img/arrow-down.svg";
@@ -10,22 +8,22 @@ import arrowLeft from "../assets/img/arrow-left.svg";
 import SidebarUser from "./SidebarUser";
 import AddList from "./AddList";
 import bird from "../assets/img/bird.svg";
-import Icon from "./Icon";
 import { useHistory } from "react-router";
-import { useState } from "react";
 import today from "../assets/img/today.svg";
 import tomorrow from "../assets/img/tomorrow.svg";
 import list from "../assets/img/list.svg";
 import timer from "../assets/img/timer.svg";
 import todayPurple from "../assets/img/today--purple.svg";
 import tomorrowPurple from "../assets/img/tomorrow--purple.svg";
+import { LIST_SET_ACTIVE } from "../features/lists/constants/listsConstants";
 import listPurple from "../assets/img/list--purple.svg";
 import timerPurple from "../assets/img/timer--purple.svg";
-import ConfirmOverlay from "../screens/ConfirmOverlay";
 
 const ListSidebar = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const { lists } = useSelector((state) => state.lists);
+  const active = useSelector((state) => state.lists.active);
   return (
     <>
       <div className="sidebar">
@@ -33,6 +31,7 @@ const ListSidebar = () => {
           <div
             className="logo"
             onClick={() => {
+              dispatch({ type: LIST_SET_ACTIVE, payload: null });
               history.push("/");
             }}
           >
