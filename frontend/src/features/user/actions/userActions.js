@@ -19,7 +19,7 @@ export const getUserWithToken = () => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const { data } = await axios.get(`/login/verify/?hOtoken=true`);
-    if (data && data.name) {
+    if (data && (data.firstName || data.name)) {
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: data,
@@ -60,8 +60,7 @@ export const createUser =
   (email, firstName, lastName, password) => async (dispatch) => {
     try {
       dispatch({ type: USER_SIGNUP_REQUEST });
-      const name = firstName + " " + lastName;
-      const body = { email, name, password };
+      const body = { email, firstName, lastName, password };
       const { data } = await axios.post("/signup", body);
       if (data && data.token) {
         dispatch({

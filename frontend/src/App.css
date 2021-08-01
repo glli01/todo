@@ -40,7 +40,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 10vw;
+  width: 13vw;
   min-width: 150px;
   padding: 0 4rem;
   height: 100vh;
@@ -248,7 +248,7 @@ button:hover {
   justify-content: flex-start;
   text-align: left;
   position: relative;
-  width: 100%;
+  width: fill;
   min-height: 2rem;
   height: fit-content;
   min-height: 2rem;

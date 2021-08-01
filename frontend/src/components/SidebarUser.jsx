@@ -7,7 +7,7 @@ const SidebarUser = () => {
   const { user } = useSelector((state) => state.user);
   return (
     <>
-      {user && user.name ? (
+      {user && (user.name || user.firstName) ? (
         <UserAvailable user={user} profilePic={guest}></UserAvailable>
       ) : (
         <div className="user--unavailable">

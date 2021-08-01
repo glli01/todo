@@ -191,7 +191,8 @@ app.post("/signup", async (req, res, next) => {
   try {
     const user = await User.create({
       email: req.body.email,
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
     });
     if (user) {
       try {
