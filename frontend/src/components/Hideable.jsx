@@ -33,13 +33,13 @@ const Hideable = ({
                   <img
                     className="hideable__icon--front"
                     src={frontIconShow}
-                    alt="front"
+                    alt=""
                   />
                 ) : (
                   <img
                     className="hideable__icon--front"
                     src={frontIconNoShow}
-                    alt="front"
+                    alt=""
                   ></img>
                 )}
               </Icon>
@@ -51,9 +51,9 @@ const Hideable = ({
           {assetShow || assetNoShow ? (
             <Icon>
               {active ? (
-                <img src={assetShow}></img>
+                <img src={assetShow} alt=""></img>
               ) : (
-                <img src={assetNoShow}></img>
+                <img src={assetNoShow} alt=""></img>
               )}
             </Icon>
           ) : (

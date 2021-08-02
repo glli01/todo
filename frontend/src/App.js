@@ -14,10 +14,10 @@ import TodayScreen from "./screens/TodayScreen";
 import ConfirmOverlay from "./screens/ConfirmOverlay";
 function App() {
   const dispatch = useDispatch();
-  const { guest, loading } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getUserWithToken());
-  }, []);
+  }, [dispatch]);
   // useEffect(() => {
   //   dispatch(getLists(guest));
   // }, [guest]);

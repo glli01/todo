@@ -39,7 +39,11 @@ const UserAvailable = ({ user, profilePic }) => {
             <div className="wrapper--fs">
               <div className="user__wrapper--profile-pic">
                 <Icon>
-                  <img className="user__profile-pic" src={profilePic}></img>
+                  <img
+                    className="user__profile-pic"
+                    src={profilePic}
+                    alt=""
+                  ></img>
                 </Icon>
               </div>
               <div className="wrapper user--available__text">

@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewTask } from "../features/tasks/actions/tasksActions.js";
 import { createGuestTask, getGuestTaskId } from "../guest/guestTasks.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const AddTask = React.forwardRef(({ list }, ref) => {
+  const [showDate, setShowDate] = useState(true);
   const dispatch = useDispatch();
   const { user, guest } = useSelector((state) => state.user);
   const [date, setDate] = useState(new Date());
@@ -22,7 +23,7 @@ const AddTask = React.forwardRef(({ list }, ref) => {
             description: "no description",
             list: list._id,
             user: user._id,
-            date: date,
+            dueDate: showDate ? date : new Date(0),
           })
         );
       } else {
@@ -44,12 +45,35 @@ const AddTask = React.forwardRef(({ list }, ref) => {
         className="task__input"
         ref={ref}
       ></input>
-      <DatePicker
-        selected={date}
-        onChange={(date) => setDate(date)}
-        showTimeSelect
-        dateFormat="Pp"
-      ></DatePicker>
+      <div className="wrapper--fs">
+        {showDate ? (
+          <span
+            className="task__button--date"
+            onClick={() => setShowDate(false)}
+          >
+            {" "}
+            -{" "}
+          </span>
+        ) : (
+          <span
+            className="task__button--date"
+            onClick={() => setShowDate(true)}
+          >
+            {" "}
+            +{" "}
+          </span>
+        )}
+        {showDate ? (
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            showTimeSelect
+            dateFormat="Pp"
+          ></DatePicker>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 });

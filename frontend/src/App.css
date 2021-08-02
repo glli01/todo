@@ -227,7 +227,10 @@ button:hover {
 .icon {
   margin: auto 0;
 }
-
+.task__button--date {
+  /* width: 2rem; */
+  padding: 0 0.2rem;
+}
 .icon > .wrapper > img {
   object-fit: cover;
 }

@@ -3,16 +3,7 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CONFIRM_CLOSE } from "../features/confirm/constants/confirmConstants";
 import { deleteList } from "../features/lists/actions/listsActions";
-const ConfirmOverlay = (
-  {
-    // prompt = "Are you sure you want to delete this list?",
-    // promptYes = "Delete",
-    // promptNo = "Cancel",
-    // open = false,
-    // setOpen,
-    // confirmHandler,
-  }
-) => {
+const ConfirmOverlay = () => {
   const dispatch = useDispatch();
 
   const divEl = useRef();

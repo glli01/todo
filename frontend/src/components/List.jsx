@@ -7,7 +7,7 @@ import trash from "../assets/img/trash.svg";
 import Hoverable from "./Hoverable";
 const List = ({ list }) => {
   const { active } = useSelector((state) => state.lists);
-  const guest = useSelector((state) => state.user.guest);
+  // const guest = useSelector((state) => state.user.guest);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   return (

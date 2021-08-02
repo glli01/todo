@@ -1,9 +1,7 @@
 import React from "react";
 import Task from "./Task";
-import { useEffect } from "react";
 import Hideable from "./Hideable";
 import { useSelector } from "react-redux";
-import { getAllTasks } from "../features/tasks/actions/tasksActions.js";
 
 const Todo = React.memo(({ list, showCompleted = false }) => {
   // const dispatch = useDispatch();

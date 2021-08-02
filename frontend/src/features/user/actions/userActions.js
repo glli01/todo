@@ -10,7 +10,7 @@ import {
 import { TASK_LOGOUT } from "../../tasks/constants/tasksConstants";
 import { LIST_LOGOUT } from "../../lists/constants/listsConstants";
 import axios from "axios";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import { getLists } from "../../lists/actions/listsActions.js";
 import { getAllTasks } from "../../tasks/actions/tasksActions";
 // import bcrypt om "bcryptjs";
@@ -45,7 +45,7 @@ export const getUserWithToken = () => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    const { data } = await axios.delete("/logout");
+    await axios.delete("/logout");
     dispatch({ type: USER_LOGOUT_SUCCESS });
     dispatch({ type: LIST_LOGOUT });
     dispatch({ type: TASK_LOGOUT });
