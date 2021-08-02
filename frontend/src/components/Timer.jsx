@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import alarmSound from "../assets/sounds/alarm.mp3";
 const Timer = () => {
   const [minutes, setMinutes] = useState("25");
@@ -18,6 +18,11 @@ const Timer = () => {
         : e.target.value;
     setMinutes(e.target.value > 59 ? 59 : e.target.value);
   };
+  useEffect(() => {
+    return () => {
+      clearInterval(timerID);
+    };
+  }, [timerID]);
 
   const secondChange = (e) => {
     e.target.value =

@@ -29,10 +29,15 @@ const TodayScreen = () => {
   return (
     <div>
       <div className="list__title">Today</div>
-      {dueToday && dueToday.length > 0
-        ? dueToday.map((task) => <Task key={task._id} item={task}></Task>)
-        : // ?
-          "nothing"}
+      {dueToday && dueToday.length > 0 ? (
+        dueToday.map((task) => <Task key={task._id} item={task}></Task>)
+      ) : (
+        // ?
+        <div className="list__title-2 text--center">
+          {" "}
+          You do not have any tasks due today!
+        </div>
+      )}
     </div>
   );
 };
