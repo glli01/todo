@@ -3,7 +3,7 @@
 **Last Updated:** 8/2/2021
   
   
-##📃 **Project Description:**  
+## 📃 **Project Description:**  
 Todooos is a todolist project that uses the MERN stack. Originally it was created to teach a couple friends the basics of the MERN stack, starting from the react frontend, to the node/express API, and eventually to connection with mongoDB and user management.  Over time it has turned into a more involved project which is tailored for personal use.  It currently includes features such as user management (with bcryptjs and auth on server side, and jwt tokens for authorization), time management (with tasks set for date and times and a timer for pomodoro cycles), categorization of lists through colors, the completion and archiving of tasks.  
 
 Future features include: a more involved calendar (currently only today's tasks show), along with drag to reorder and focus tasks (that track time spent on them).
