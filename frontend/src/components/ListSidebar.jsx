@@ -86,7 +86,7 @@ const ListSidebar = () => {
             pathName={pathName}
             icon={tomorrow}
             iconActive={tomorrowPurple}
-            title={"Tommorow"}
+            title={"Tomorrow"}
           ></SidebarLink>
           <Hideable
             frontIconNoShow={timer}
