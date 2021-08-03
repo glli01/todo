@@ -6,16 +6,26 @@ import ListSidebar from "./components/ListSidebar";
 import LoginScreen from "./screens/LoginScreen";
 import Logout from "./components/Logout";
 import Spinner from "./components/Spinner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithToken } from "./features/user/actions/userActions.js";
 import SignUpScreen from "./screens/SignUpScreen";
 import TodayScreen from "./screens/TodayScreen";
 import ConfirmOverlay from "./screens/ConfirmOverlay";
+import OnboardingOverlay from "./screens/OnboardingOverlay";
 function App() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.user);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   useEffect(() => {
+    const onBoarding = JSON.parse(
+      window.localStorage.getItem("showOnboarding")
+    );
+    console.log(onBoarding);
+    if (onBoarding !== null) setShowOnboarding(false);
+    else {
+      setShowOnboarding(true);
+    }
     dispatch(getUserWithToken());
   }, [dispatch]);
   // useEffect(() => {
@@ -26,6 +36,7 @@ function App() {
       <Router>
         <Route path="/login" component={LoginScreen} />
         <Route path="/signup" component={SignUpScreen} />
+        {showOnboarding ? <OnboardingOverlay></OnboardingOverlay> : ""}
         <ConfirmOverlay></ConfirmOverlay>
         <div className="main">
           {loading ? (

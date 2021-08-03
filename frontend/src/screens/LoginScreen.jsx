@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner";
 import { Redirect } from "react-router";
 import { getAllTasks } from "../features/tasks/actions/tasksActions";
 import { getLists } from "../features/lists/actions/listsActions";
+import bird from "../assets/img/bird.svg";
 const LoginScreen = () => {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ const LoginScreen = () => {
       {success && user._id && <Redirect to="/"></Redirect>}
       {
         <div className="login__wrapper">
+          <div className="login__title">
+            <img src={bird} alt=""></img> <div>todooos</div>
+          </div>
           {loading ? (
             <Spinner></Spinner>
           ) : (

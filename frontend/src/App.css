@@ -446,15 +446,24 @@ input[type="number"] {
   background-color: #ffad33;
 }
 .spinner {
+  z-index: +100;
   height: 100%;
   width: 100%;
+  background-color: white;
   display: flex;
+  justify-content: center;
 }
-.spinner > img {
-  height: 5%;
-  width: 5%;
-  margin: auto;
+.spinner-bird {
+  --bird-height: 3rem;
+  height: var(--bird-height);
+  width: var(--bird-height);
+  margin-bottom: 0.3rem;
+}
+.spinner > .wrapper > .spinner-icn {
+  height: var(--bird-height);
+  width: var(--bird-height);
   animation: spin infinite 2s linear;
+  margin-bottom: var(--bird-height);
 }
 .login__wrapper {
   position: absolute;
@@ -462,6 +471,7 @@ input[type="number"] {
   height: 100%;
   width: 100%;
   z-index: +50;
+  overflow: hidden;
   display: flex;
 }
 .login__form__input {
@@ -476,6 +486,26 @@ input[type="number"] {
   font-size: 2rem;
   font-weight: bold;
   padding-bottom: 1rem;
+}
+.login__title {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  font-size: 4rem;
+  margin: 1.5rem;
+  opacity: 0.8;
+}
+.login__title > img {
+  height: 5rem;
+  width: 5rem;
+  margin-right: 1rem;
+}
+.login__title > div {
+  margin-right: 3rem;
+  color: #ff8c28;
+  font-weight: 600;
 }
 .login__form__input > input {
   width: 100%;
@@ -625,6 +655,89 @@ input[type="number"] {
 }
 .list__wrapper {
   position: relative;
+}
+.onboarding__wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  left: 0;
+  z-index: +5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.onboarding__display__wrapper {
+  z-index: +30;
+  width: 50%;
+  height: 80%;
+  background-color: white;
+  border-radius: 1rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.onboarding__toggle {
+  color: rgb(155, 155, 155);
+  text-align: right;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.onboarding__toggle:hover {
+  color: black;
+}
+.onboarding__display__wrapper .wrapper--horizontal {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+.onboarding__display__wrapper .wrapper--horizontal .wrapper {
+  height: 100%;
+  width: 100%;
+}
+.onboarding__display__title {
+  font-size: 3rem;
+  color: #ff8c28;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.onboarding__display__image > img {
+  height: 100%;
+  max-width: 50vw;
+  display: block;
+  margin: 0 auto;
+}
+.onboarding__display__image {
+  margin-bottom: 2rem;
+  height: 75%;
+}
+.onboarding__display__bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.onboarding__display__button--previous {
+  display: block;
+}
+.onboarding__display__button--next,
+.onboarding__display__button--previous {
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 1rem;
+}
+.onboarding__display__button--next:hover,
+.onboarding__display__button--previous:hover {
+  font-weight: 600;
+}
+
+.onboarding__display__button--next > img,
+.onboarding__display__button--previous > img {
+  height: 0.7rem;
+  padding: 0 0.5rem;
 }
 /* div:focus {
   border: 1px solid black;
