@@ -1,9 +1,14 @@
-# **Todolist**  
-## **By:** George Li (glli01)  
-## **Last Updated:** 7/15/2021
+# 📚 **todooos**  
+**By:** George Li (glli01)  
+**Last Updated:** 8/2/2021
   
   
-## **Project Description:**  
-This project uses the MERN stack and was created to teach my friends the basics of programming.  
-Specifically, the dependencies we use include Mongo, express, react, node, axios, dotenv, concurrently, react-router-dom, mongoose, and perhaps in the future redux.  
-The todolist is pretty generic.  It includes a timer and what you would expect of a todolist.  I added the capability to create different lists and am planning to add the ability to have multiple users (hashed through bcrypt).  
+##📃 **Project Description:**  
+Todooos is a todolist project that uses the MERN stack. Originally it was created to teach a couple friends the basics of the MERN stack, starting from the react frontend, to the node/express API, and eventually to connection with mongoDB and user management.  Over time it has turned into a more involved project which is tailored for personal use.  It currently includes features such as user management (with bcryptjs and auth on server side, and jwt tokens for authorization), time management (with tasks set for date and times and a timer for pomodoro cycles), categorization of lists through colors, the completion and archiving of tasks.  
+
+Future features include: a more involved calendar (currently only today's tasks show), along with drag to reorder and focus tasks (that track time spent on them).
+  
+All of it is designed and coded by George Li.  
+  
+### ✴️ Libraries:
+Some of the libraries that it uses are: Mongo, express, react, Node, axios, redux, react-router-dom, react-colorful, react-date-picker.  
